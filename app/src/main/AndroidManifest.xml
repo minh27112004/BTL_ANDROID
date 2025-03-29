@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DuAn1NewApplication"
+        tools:targetApi="31">
+        <activity
+            android:name=".ViCuaToiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongTinCaNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LienHeGopYActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoiMatKhauUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CapNhatDonDatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDonDatAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDonDatUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayLaiMatKhauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".XacNhanTaiKhoanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginSigUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DanhSachSanPhamUseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiaChiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemDiaChiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuaSanPhamAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemSanPhamAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
