@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.duan1"
+    namespace = "com.example.btl_android"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.duan1"
+        applicationId = "com.example.btl_android"
         minSdk = 35
         targetSdk = 35
         versionCode = 1
