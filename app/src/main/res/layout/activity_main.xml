@@ -1,19 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragContainerView"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutNavBottomUser"
+
+        />
+
+
+    <!--    navbuttom của user-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutNavBottomUser"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_nav_buttom_user_admin"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:weightSum="4"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/layoutTrangChuUser"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_seclected_nav_bottom"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_trang_chu" />
+
+                <TextView
+                    android:id="@+id/tvTrangChuUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Trang chủ"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layouGioiHangUser"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_gio_hang" />
+
+                <TextView
+                    android:id="@+id/tvGioHangUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Giỏ hàng"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+
+            </LinearLayout>
+
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/layoutSanPhamUser"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:gravity="center"-->
+            <!--                android:background="@android:color/transparent"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:paddingEnd="5dp"-->
+            <!--                android:paddingStart="5dp"-->
+            <!--                >-->
+            <!--                <ImageView-->
+            <!--                    android:layout_width="20dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+
+            <!--                    android:src="@drawable/icon_san_pham"-->
+            <!--                    android:adjustViewBounds="true"-->
+            <!--                    />-->
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tvSanPhamUser"-->
+            <!--                    android:visibility="gone"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Sản phẩm"-->
+            <!--                    android:fontFamily="serif"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    android:layout_marginStart="10dp"-->
+
+            <!--                    />-->
+
+
+            <!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/layoutDonDatUser"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_hoa_don" />
+
+                <TextView
+                    android:id="@+id/tvDonDatUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Đơn đặt"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTaiKhoanUser"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_tai_khoan_nav_bottom" />
+
+                <TextView
+                    android:id="@+id/tvTaiKhoanUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Tài khoản"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!--    navbottom của admin-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutNavBottomAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_nav_buttom_user_admin"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:id="@+id/layoutTrangChuAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_seclected_nav_bottom"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_trang_chu" />
+
+                <TextView
+                    android:id="@+id/tvTrangChuAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Trang chủ"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layouThongKeAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_thong_thong_ke" />
+
+                <TextView
+                    android:id="@+id/tvThongKeAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Thống kê"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutDonDatAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_hoa_don" />
+
+                <TextView
+                    android:id="@+id/tvDonDatAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Đơn đặt"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutTaiKhoanAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_tai_khoan_nav_bottom" />
+
+                <TextView
+                    android:id="@+id/tvTaiKhoanAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="serif"
+                    android:text="Tài khoản"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

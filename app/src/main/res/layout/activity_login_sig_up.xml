@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8F9ED"
+    tools:context=".LoginSigUpActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/custom_layout_login_sigup"
+        >
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/myTabLayout"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+            app:tabMaxWidth="200dp"
+            app:tabSelectedTextColor="@color/black"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorColor="@color/black"
+            app:tabBackground="@color/white"
+            app:tabTextColor="@android:color/darker_gray"
+            app:tabIndicatorHeight="2dp"
+            />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/myViewPager2"
+
+            />
+
+
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_logo_app"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:elevation="@dimen/cardview_compat_inset_shadow"
+        />
+
+
+</RelativeLayout>
