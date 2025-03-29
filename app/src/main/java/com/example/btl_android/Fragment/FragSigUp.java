@@ -93,6 +93,15 @@ public class FragSigUp extends Fragment {
                     return false;
 
                 }
+                if(taiKhoanDAO.checkUserName(edTenDangNhap.getText().toString())){
+                    Toast.makeText(getContext(), "Tên đăng nhập đã có người sử dụng. Vui lòng nhập tên khác !",
+                            Toast.LENGTH_SHORT).show();
+                    edTenDangNhap.setText("");
+                    edMatKhau.setText("");
+                    edNhapLaiMatKhau.setText("");
+                    edTenDangNhap.requestFocus();
+                    return false;
+                }
 
                 if (edTenDangNhap.getText().toString().length() < 5) {
 
