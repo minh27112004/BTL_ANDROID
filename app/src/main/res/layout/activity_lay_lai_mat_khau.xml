@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8F9ED"
+    tools:context=".LoginSigUpActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/custom_layout_login_sigup"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:fontFamily="serif"
+            android:textSize="25dp"
+            android:textStyle="bold"
+
+
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="20dp"
+            app:passwordToggleEnabled="true"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập mật khẩu mới"
+                android:fontFamily="serif"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/icon_mat_khau_login_sigup"
+                android:drawablePadding="10dp"
+                android:background="@drawable/custom_edittext_login_sigup"
+                android:padding="20dp"
+                android:id="@+id/edMatKhauMoiLayLaiMatKhau"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            app:passwordToggleEnabled="true"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập lại mật khẩu mới"
+                android:inputType="textPassword"
+                android:fontFamily="serif"
+                android:drawableStart="@drawable/icon_mat_khau_login_sigup"
+                android:drawablePadding="10dp"
+                android:background="@drawable/custom_edittext_login_sigup"
+                android:padding="20dp"
+                android:id="@+id/edLaiMatKhauMoiLayLaiMatKhau"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/btnDoiMatKhacLayLaiMatKhau"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Đổi mật khẩu"
+            android:fontFamily="serif"
+            android:background="@drawable/custom_btn_login_sigup"
+            android:padding="18.5dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            />
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_logo_app"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:elevation="@dimen/cardview_compat_inset_shadow"
+        />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+
+        android:id="@+id/ivBackDoiMatKhau"
+
+        android:src="@drawable/icon_back"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+
+</RelativeLayout>
