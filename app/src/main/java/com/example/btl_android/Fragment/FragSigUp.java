@@ -75,8 +75,6 @@ public class FragSigUp extends Fragment {
 
                 }
 
-
-
             }
 
             //Hàm bắt lỗi
