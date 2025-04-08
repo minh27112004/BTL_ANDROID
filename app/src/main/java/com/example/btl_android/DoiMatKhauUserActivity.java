@@ -82,6 +82,10 @@ public class DoiMatKhauUserActivity extends AppCompatActivity {
             Toast.makeText(this, "Mời nhập thông tin", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if(!taiKhoanDAO.isValidPassword(edtNewPass.getText().toString())){
+            Toast.makeText(this, "Mật khẩu mới phải có chữ hoa đầu và kí tự đặc biệt!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (!edtNewPass.getText().toString().equals(edtNewPassAgain.getText().toString())) {
             Toast.makeText(this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
             return false;
@@ -94,6 +98,10 @@ public class DoiMatKhauUserActivity extends AppCompatActivity {
             Toast.makeText(this, "Mật khẩu cũ không khớp", Toast.LENGTH_SHORT).show();
             return false;
 
+        }
+        if(matKhauCu.equals(edtNewPass.getText().toString())){
+            Toast.makeText(this, "Mật khẩu mới phải khác mật khẩu cũ !", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         return true;

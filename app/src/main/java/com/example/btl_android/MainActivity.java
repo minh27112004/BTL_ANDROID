@@ -428,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
                                         , Animation.RELATIVE_TO_SELF, 0.0f
                                         , Animation.RELATIVE_TO_SELF, 0.0f);
                         scaleAnimation.setFillAfter(true);
-                        scaleAnimation.setDuration(200);
+                        scaleAnimation.setDuration(2000);
                         layoutTaiKhoanUser.startAnimation(scaleAnimation);
 
 

@@ -209,6 +209,28 @@ public class TaiKhoanDAO {
             return false;
         }
     }
+    public static boolean isValidPassword(String password) {
+        // Kiểm tra nếu password rỗng hoặc null
+        if (password == null || password.isEmpty()) {
+            return false;
+        }
+
+        // Kiểm tra ký tự đầu tiên có phải chữ cái in hoa không
+        if (!Character.isUpperCase(password.charAt(0))) {
+            return false;
+        }
+
+        // Kiểm tra xem có chứa ít nhất một ký tự đặc biệt không
+        String specialCharacters = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        for (char c : password.toCharArray()) {
+            if (specialCharacters.indexOf(c) != -1) {
+                return true; // Tìm thấy ký tự đặc biệt, trả về true
+            }
+        }
+
+        // Không tìm thấy ký tự đặc biệt
+        return false;
+    }
 
 
 

@@ -91,6 +91,10 @@ public class FragSigUp extends Fragment {
                     return false;
 
                 }
+                if(!taiKhoanDAO.isValidPassword(edMatKhau.getText().toString())){
+                    Toast.makeText(getContext(), "Mật khẩu mới phải có chữ hoa đầu và kí tự đặc biệt!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
                 if(taiKhoanDAO.checkUserName(edTenDangNhap.getText().toString())){
                     Toast.makeText(getContext(), "Tên đăng nhập đã có người sử dụng. Vui lòng nhập tên khác !",
                             Toast.LENGTH_SHORT).show();
