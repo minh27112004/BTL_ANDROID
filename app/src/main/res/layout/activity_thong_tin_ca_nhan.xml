@@ -87,6 +87,7 @@
             android:layout_margin="8dp"
             android:hint="Số điện thoại"
             android:padding="16dp"
+            android:inputType="number"
             android:fontFamily="serif"
             android:textSize="16sp"/>
 
@@ -99,6 +100,7 @@
             android:background="@drawable/edittex_background"
             android:layout_margin="8dp"
             android:hint="Giới tính"
+            android:inputType="text"
             android:padding="16dp"
             android:fontFamily="serif"
             android:textSize="16sp"/>
@@ -113,6 +115,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:hint="Ngày sinh"
+            android:inputType="date"
             android:padding="16dp"
             android:fontFamily="serif"
             android:textSize="16sp"
@@ -122,7 +125,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_doi_pass"
+        android:id="@+id/btn_luu_thongtin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Lưu thông tin"
