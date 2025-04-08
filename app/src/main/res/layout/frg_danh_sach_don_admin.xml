@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:text="Danh sách đơn đặt"
+        android:background="@drawable/custom_tieu_de_frag"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textSize="23dp"
+        android:elevation="5dp"
+
+        />
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/tabLayoutDonDatAdmin"
+
+        app:tabTextColor="#A39E9E"
+        app:tabSelectedTextColor="@color/black"
+        android:background="@color/white"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorColor="@color/black"
+        app:tabBackground="@color/white"
+        app:tabIndicatorHeight="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2DonDatAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_tk_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tài Khoản"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/img_1"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/txtTenTaiKhoanAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnThongTinAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Thông tin cá nhân"
+        android:drawableStart="@drawable/img_6"
+        android:textAlignment="viewStart"
+        android:paddingStart="20dp"
+        android:drawablePadding="20dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="serif"
+        android:background="@drawable/button_background"
+        android:drawableEnd="@drawable/img_3"
+        android:paddingEnd="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoiMatKhauAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Đổi mật khẩu"
+        android:drawableStart="@drawable/img_7"
+        android:textAlignment="viewStart"
+        android:paddingStart="20dp"
+        android:drawablePadding="20dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="serif"
+        android:background="@drawable/button_background"
+        android:drawableEnd="@drawable/img_3"
+        android:paddingEnd="10dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDangXuatAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Đăng xuất"
+        android:drawableStart="@drawable/img_8"
+        android:textAlignment="viewStart"
+        android:paddingStart="20dp"
+        android:drawablePadding="20dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="serif"
+        android:background="@drawable/button_background"
+        android:drawableEnd="@drawable/img_3"
+        android:paddingEnd="10dp"/>
+
+</LinearLayout>

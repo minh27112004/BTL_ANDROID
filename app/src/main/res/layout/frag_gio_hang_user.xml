@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTieuDe"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/custom_tieu_de_frag"
+        android:elevation="5dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Giỏ hàng"
+        android:textSize="23dp"
+        android:textStyle="bold" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvGioHang"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:layout_above="@id/layoutTongTien"
+        android:layout_below="@id/tvTieuDe" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutTongTien"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#C0F3ED"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:id="@+id/tvTongTienGioHang"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:fontFamily="serif"
+            android:text="Tổng tiền : 0 000 VND"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|center_vertical"
+
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDatHangGioHang"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/custom_btn_gio_hang"
+                android:fontFamily="serif"
+                android:text="Đặt hàng"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

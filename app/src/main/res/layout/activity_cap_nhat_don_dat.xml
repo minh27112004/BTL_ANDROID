@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CapNhatDonDatActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_cap_nhat_don_dat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật địa chỉ"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/imgBackcapNhatDiaChi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_10"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liên hệ"
+        android:textSize="20sp"
+        android:fontFamily="serif"
+        android:layout_margin="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_lien_he"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <EditText
+            android:id="@+id/edtTenKhachHang"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittex_background"
+            android:layout_margin="10dp"
+            android:hint="Tên dăng nhập"
+            android:paddingStart="10dp"
+            android:fontFamily="serif"/>
+
+
+        <EditText
+            android:id="@+id/edtSoDienThoai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittex_background"
+            android:layout_margin="10dp"
+            android:hint="Số điện thoại"
+            android:paddingStart="10dp"
+            android:fontFamily="serif"
+            android:inputType="number"/>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Địa chỉ"
+        android:textSize="20sp"
+        android:fontFamily="serif"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_lien_he"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp">
+
+        <EditText
+            android:id="@+id/edtDiaChiCapNhat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittex_background"
+            android:layout_margin="10dp"
+            android:hint="Tỉnh/Thành phố, Quận/Huyện"
+            android:paddingStart="10dp"
+            android:fontFamily="serif"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCapNhatThongTinDiaChi"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Cập nhật"
+        android:fontFamily="serif"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/button_background_doi_pass"/>
+
+</LinearLayout>

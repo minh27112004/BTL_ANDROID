@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:background="@drawable/custom_tieu_de_frag"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_back"
+            android:layout_marginStart="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết đơn đặt"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:fontFamily="serif"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/custom_item"
+            android:padding="15dp"
+            >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_vi_tri"
+                android:adjustViewBounds="true"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ nhận hàng"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/tvTenNguoiNhan"
+                    android:text="Nguyễn Tất Công"
+                    android:fontFamily="serif"
+                    android:textColor="#8A8484"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/tvSDTChiTietDonDat"
+                    android:text="0987654231"
+                    android:fontFamily="serif"
+                    android:textColor="#8A8484"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/tvDiaChiChiTietDonDat"
+                    android:text="123 Xuân Phương, Nam Từ Liên, Hà Nội"
+                    android:fontFamily="serif"
+                    android:textColor="#8A8484"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12dp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/custom_item"
+            >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_phuong_thu_thanh_toan_chi_tiet_don_dat"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Phương thức thanh toán"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Thanh toán khi nhận hàng"
+                    android:fontFamily="serif"
+                    android:textColor="#8A8484"
+
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/custom_item"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/rcvChiTietDonDat"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="#D7D4D4"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/tvTongTienChiTietDonDat"
+
+                android:text="Tổng tiền thanh toán : 0 000 VND"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:gravity="right"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D7D4D4"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="3dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mã đơn hàng"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SEDKSH7289SH"
+
+                        android:id="@+id/tvMaDonHangChiTietDonHang"
+
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="right"
+
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="5dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thời gian đặt hàng"
+                        android:fontFamily="serif"
+                        android:textColor="#8A8484"
+
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/tvThoiGianDatHangChiTietDonHang"
+
+                        android:text="2/2/2022 20:03"
+                        android:fontFamily="serif"
+                        android:textColor="#8A8484"
+                        android:gravity="right"
+
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/btnHuyDonChiTietDonDat"
+
+        android:text="Xác nhận hủy"
+        android:textAllCaps="false"
+        android:fontFamily="serif"
+        android:textSize="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/custom_btn_huy_don_dat"
+        android:layout_marginTop="10dp"
+        android:padding="15dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết đơn hàng"
+            android:gravity="center"
+            android:fontFamily="serif"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/tvTieuDe"
+            android:background="#C0F3ED"
+            android:padding="16dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nội dung đơn đặt"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/custom_bottom_sheet"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:elevation="3dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thực phẩm : "
+                android:fontFamily="serif"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="- Rau muống, Số lượng: 1Kg"
+                android:layout_marginStart="10dp"
+                android:fontFamily="serif"
+                android:id="@+id/tvThucPham"
+                android:textSize="13sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian : "
+                android:id="@+id/tvThoiGianBottomSheet"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="#D7D4D4"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Tổng tiền thanh toán : "
+                android:fontFamily="serif"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:layout_marginTop="3dp"
+                android:id="@+id/tvTongTienThanhToan"
+                />
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phương thức thanh toán"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@drawable/custom_bottom_sheet"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:elevation="3dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_phuong_thu_thanh_toan_chi_tiet_don_dat"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="5dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phương thức thanh toán"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thanh toán khi nhận hàng ( Tiền mặt )"
+                    android:fontFamily="serif"
+                    android:textSize="10sp"
+                    android:textColor="#8A8484"
+
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thông tin cá nhân"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/custom_bottom_sheet"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:elevation="3dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên người nhận"
+                android:fontFamily="serif"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tên người nhận"
+                android:fontFamily="serif"
+                android:enabled="false"
+                android:padding="16dp"
+                android:background="@drawable/custom_edittext_login_sigup"
+                android:textSize="16sp"
+                android:id="@+id/edTenNguoiNhanBottomSheet"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại"
+                android:fontFamily="serif"
+                android:layout_marginTop="5dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nhập số điện thoại"
+                android:id="@+id/edSoDienThoaiBottomSheet"
+                android:textSize="16sp"
+                android:fontFamily="serif"
+                android:enabled="true"
+                android:padding="16dp"
+                android:background="@drawable/custom_edittext_login_sigup"
+                android:layout_marginTop="3dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ"
+                android:fontFamily="serif"
+                android:layout_marginTop="5dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nhập địa chỉ"
+                android:fontFamily="serif"
+                android:enabled="true"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_edittext_login_sigup"
+                android:padding="16dp"
+                android:layout_marginTop="3dp"
+                android:textSize="16sp"
+                android:id="@+id/edDiaChiBottomSheet"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@id/tvTieuDe"
+            android:layout_marginTop="10dp"
+            android:padding="16dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Hủy"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/btnHuy"
+                android:background="@drawable/custom_btn_huy_don_dat"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="Xác nhận"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:id="@+id/btnXacNhanBottomSheet"
+                android:background="@drawable/custom_btn_chi_tiet_san_pham"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

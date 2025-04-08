@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#DFF8EF">
+        <ImageView
+            android:id="@+id/imgThongKe"
+            android:layout_width="100dp"
+            android:layout_height="94dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/custom_img_thong_ke"
+            android:src="@drawable/img_bap_cai_trang_chu"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTenSpThongKe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên sản phẩm: Bông cải xanh"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:layout_marginTop="25dp"/>
+            <TextView
+                android:id="@+id/txtSoLuongMua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng mua: 100 lượt"
+                android:textColor="#9E9898"
+                android:layout_marginTop="5dp"
+                android:fontFamily="serif"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

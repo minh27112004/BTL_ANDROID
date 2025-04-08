@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChiTietSanPhamActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/custom_tieu_de_frag"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:elevation="3dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_back"
+
+                android:id="@+id/ivbackChiTietSanPham"
+                android:adjustViewBounds="true"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chi tiết sản phẩm"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:gravity="center"
+                />
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/img_rau_muonh_chi_tiet_san_pham"
+            android:adjustViewBounds="true"
+            android:id="@+id/ivAnhChiTietSp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D7D4D4"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rau muống"
+                android:fontFamily="serif"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:id="@+id/tvTenSanPham"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="3dp"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_ngoi_sao"
+                    android:adjustViewBounds="true"
+                    />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_ngoi_sao"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_ngoi_sao"
+                    android:adjustViewBounds="true"
+                    android:layout_marginEnd="5dp"
+                    />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_ngoi_sao"
+                    android:adjustViewBounds="true"
+                    />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/img_ngoi_sao"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                >
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="45dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:background="@drawable/custom_item_dau_tru"-->
+<!--                        android:text="-"-->
+
+<!--                        android:id="@+id/tvDauTruChiTietDonHang"-->
+
+<!--                        android:gravity="center"-->
+<!--                        android:textColor="#00FA37"-->
+<!--                        android:textStyle="bold"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="45dp"-->
+<!--                        android:layout_height="30dp"-->
+
+<!--                        android:id="@+id/tvSoLuongSanPhamChiTietDonHang"-->
+
+<!--                        android:text="1"-->
+<!--                        android:gravity="center"-->
+
+<!--                        android:fontFamily="serif"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="45dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:background="@drawable/custom_item_dau_cong"-->
+
+<!--                        android:id="@+id/tvDauCongChiTietDonHang"-->
+
+<!--                        android:text="+"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textStyle="bold"-->
+<!--                        />-->
+
+
+
+<!--                </LinearLayout>-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:id="@+id/tvGiaTienChiTienSanPham"
+
+                    android:gravity="center_vertical"
+                    android:text="10.000 VND"
+                    android:fontFamily="serif"
+                    android:textSize="18sp"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D7D4D4"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Về sẩn phẩm"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textSize="17sp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMoTaSanPhamChiTietSanPham"
+                android:text="Rau muống là một nguồn dồi dào của các vitamin và khoáng chất quan trọng như vitamin A, vitamin C, kali, sắt, và axit folic. Nó cũng cung cấp chất xơ và chất chống oxy hóa. Rau muống thường được sử dụng trong các món ăn như xào, nấu canh, và làm salad."
+                android:fontFamily="serif"
+                android:textColor="#706969"
+                android:layout_marginTop="3dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutThemVaoGioHangChiTietSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="15dp"
+            android:gravity=""
+            android:background="@drawable/custom_btn_chi_tiet_san_pham"
+            android:layout_marginBottom="50dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_gio_hang"
+                android:layout_marginStart="40dp"
+                app:tint="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginStart="55dp"
+                android:text="Thêm vào giỏ hàng"
+                android:fontFamily="serif"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>
