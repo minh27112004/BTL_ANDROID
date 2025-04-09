@@ -37,7 +37,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:fontFamily="serif"
-        android:text="Nguyễn Tát Công"
+        android:text="Nguyễn Đắc Minh"
         android:textSize="20dp"/>
 
 

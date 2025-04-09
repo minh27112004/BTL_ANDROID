@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.example.btl_android.DBHelper.MyDBHelper;
 import com.example.btl_android.DTO.TaiKhoanDTO;
+import com.example.btl_android.DTO.ThongTinKhachHangDTO;
 
 public class TaiKhoanDAO {
 
@@ -42,10 +43,11 @@ public class TaiKhoanDAO {
     public int updateRow(TaiKhoanDTO objTaiKhoan){
 
         ContentValues values = new ContentValues();
-        values.put("mat_khau",objTaiKhoan.getMatKhau());
+        values.put("soDienThoai", objTaiKhoan.getSoDienThoai());
+        values.put("diaChi", objTaiKhoan.getDiachi());
 
-        return db.update("tb_tai_khoan",values,"id_tai_khoan=?"
-                ,new String[]{objTaiKhoan.getIdTaiKhoan()+""});
+        return db.update("tb_tai_khoan", values, "id_tai_khoan=?",
+                new String[]{objTaiKhoan.getIdTaiKhoan()+""});
 
 
     }
@@ -102,6 +104,7 @@ public class TaiKhoanDAO {
         return list;
     }
 
+
     // Ham lấy thông tin để hiển thị lên EditText
     public TaiKhoanDTO getThongTinTheoTenDangNhap(String tenDangNhap) {
         SQLiteDatabase db = myDBHelper.getReadableDatabase();
@@ -114,7 +117,8 @@ public class TaiKhoanDAO {
             String soDienThoai = cursor.getString(cursor.getColumnIndexOrThrow("soDienThoai"));
             String gioiTinh = cursor.getString(cursor.getColumnIndexOrThrow("gioiTinh"));
             String ngaySinh = cursor.getString(cursor.getColumnIndexOrThrow("ngaySinh"));
-            userInfo = new TaiKhoanDTO(idTaiKhoan, tenUser, email, soDienThoai, gioiTinh, ngaySinh);
+            String diachi = cursor.getString(cursor.getColumnIndexOrThrow("diaChi"));
+            userInfo = new TaiKhoanDTO(idTaiKhoan, tenUser, email, soDienThoai, gioiTinh, ngaySinh,diachi);
         }
         cursor.close();
 //        db.close();

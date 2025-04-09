@@ -125,11 +125,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "email TEXT, " +
                 "soDienThoai TEXT, " +
                 "gioiTinh TEXT," +
+                "diaChi TEXT," +
                 " ngaySinh TEXT\n" +
                 ");\n";
         db.execSQL(sqlTaiKhoan);
 
-        db.execSQL("INSERT INTO tb_tai_khoan VALUES(1, 1, 'admin', '12345', 'Nguyễn Tất Công', 'cong04@gmail.com', '0253536354', 'Nam', '01/04/2004')");
+        db.execSQL("INSERT INTO tb_tai_khoan VALUES(1, 1, 'admin', '12345', 'Nguyễn Đắc Minh', 'minh@gmail.com', '0253536354', 'Nam','Thái Bình', '27/11/2004')");
 
 
 

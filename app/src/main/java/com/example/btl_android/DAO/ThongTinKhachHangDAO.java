@@ -6,16 +6,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.btl_android.DBHelper.MyDBHelper;
+import com.example.btl_android.DTO.TaiKhoanDTO;
 import com.example.btl_android.DTO.ThongTinKhachHangDTO;
 
 public class ThongTinKhachHangDAO {
     private MyDBHelper myDBHelper;
+    private  SQLiteDatabase db;
 
 
     public ThongTinKhachHangDAO(Context context) {
         myDBHelper = new MyDBHelper(context);
+
     }
 
     public ArrayList<ThongTinKhachHangDTO> getAll() {
@@ -35,6 +39,7 @@ public class ThongTinKhachHangDAO {
 
 
 
+
     public int updateRow(ThongTinKhachHangDTO objThongTinKhachHang) {
         SQLiteDatabase db = myDBHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -44,6 +49,21 @@ public class ThongTinKhachHangDAO {
         values.put("gioi_tinh", objThongTinKhachHang.getGioiTinh());
         values.put("ngay_sinh", objThongTinKhachHang.getNgaySinh());
         return db.update("tb_thong_tin_khach_hang", values, "id_khach_hang=?", new String[]{String.valueOf(objThongTinKhachHang.getIdKhachHang())});
+    }
+    public ThongTinKhachHangDTO getThongtinByname(String tendangnhap){
+        SQLiteDatabase db= myDBHelper.getReadableDatabase();
+        Cursor cursor = db.query("tb_thong_tin_khach_hang",null,"ten_khach_hang=?",new String[]{tendangnhap},null,null,null);
+        ThongTinKhachHangDTO thongTinKhachHangDTO = null;
+        if(cursor!=null && cursor.moveToFirst()){
+            int id_khach_hang = cursor.getInt(cursor.getColumnIndexOrThrow("id_khach_hang"));
+            String ten_khach_hang = cursor.getString(cursor.getColumnIndexOrThrow("ten_khach_hang"));
+            String so_dien_thoai = cursor.getString(cursor.getColumnIndexOrThrow("so_dien_thoai"));
+            String dia_chi = cursor.getString(cursor.getColumnIndexOrThrow("dia_chi"));
+            thongTinKhachHangDTO = new ThongTinKhachHangDTO(ten_khach_hang,so_dien_thoai,dia_chi);
+        }
+        cursor.close();
+        return  thongTinKhachHangDTO;
+
     }
 
 }

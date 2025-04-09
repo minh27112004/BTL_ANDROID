@@ -22,6 +22,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.btl_android.DAO.TaiKhoanDAO;
+import com.example.btl_android.DAO.ThongTinKhachHangDAO;
+import com.example.btl_android.DTO.TaiKhoanDTO;
+import com.example.btl_android.DTO.ThongTinKhachHangDTO;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.DecimalFormat;
@@ -54,6 +58,7 @@ public class FragGioHangUser extends Fragment {
     List<DonDatUserDTO> list;
     List<SanPhamTrangChuUserDTO> listSanPham;
     SanPhamTrangChuDAO sanPhamTrangChuDAO;
+    public TaiKhoanDAO taiKhoanDAO;
 
 
 
@@ -128,7 +133,8 @@ public class FragGioHangUser extends Fragment {
     private void openShowBottomSheet() {
 
         //Khởi tạo view Cho bottom sheet
-        @SuppressLint("InflateParams") View view1 =
+        @SuppressLint("InflateParams")
+        View view1 =
                 LayoutInflater.from(requireContext())
                         .inflate(R.layout.layout_bottom_sheet_gio_hang_user
                                 , null, false);
@@ -148,15 +154,11 @@ public class FragGioHangUser extends Fragment {
         btnXacNhan = view1.findViewById(R.id.btnXacNhanBottomSheet);
         tvTongTien = view1.findViewById(R.id.tvTongTienThanhToan);
         tvThoiGian = view1.findViewById(R.id.tvThoiGianBottomSheet);
-        //Khởi tạo dao
+
         donDatUserDAO = new DonDatUserDAO(getContext());
-        Log.d("TAG", "openShowBottomSheet: ====> "+MainActivity.currentAccount.getTenUser());
+        taiKhoanDAO = new TaiKhoanDAO(requireContext());
+
         list = donDatUserDAO.getAll().stream().filter(it -> it.getTenKhachHang().equals(MainActivity.currentAccount.getTenUser())).collect(Collectors.toList());
-
-
-        //Lấy tên đăng nhập của tài khoản
-        String tenDangNhap = requireActivity().getIntent().getStringExtra("tenDangNhap");
-
         //Dùng for lồng để lấy ra thông tin của các sản pham có trong gio hàng để đặt
         String hoaDon = "";
         int idSp = 0;
@@ -177,9 +179,17 @@ public class FragGioHangUser extends Fragment {
             }
         }
 
-
+        String tenDangNhap = MainActivity.currentAccount.getTenUser();
         tvThucDon.setText(hoaDon);//set những món có trong giỏ hàng
         edTenNguoiNhan.setText(tenDangNhap);// lấy  tên đăng nhập làm tên người nhận
+        if(taiKhoanDAO==null){
+            Toast.makeText(getContext(),"null ",Toast.LENGTH_SHORT).show();
+        }else{
+            edDiaChi.setText(taiKhoanDAO.getThongTinTheoTenDangNhap(tenDangNhap).getDiachi());
+            edSoDienThoai.setText(taiKhoanDAO.getThongTinTheoTenDangNhap(tenDangNhap).getSoDienThoai());
+        }
+
+
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         tvTongTien.setText("Tổng tiền thanh toán: " + decimalFormat.format(tinhTongTienBottomSheet()) + " VND");//Lấy tổng tiền
         //Lấy giờ và ngày đặt
@@ -188,6 +198,7 @@ public class FragGioHangUser extends Fragment {
         String ngayDat = simpleDateFormat.format(calendar.getTime());
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
         String gioDat = simpleDateFormat1.format(calendar.getTime());
+
 
         //set ngày và giờ đặt cho textview Trong bottom sheet
         tvThoiGian.setText("Thời gian: " + gioDat + " " + ngayDat);
@@ -234,6 +245,11 @@ public class FragGioHangUser extends Fragment {
                     btnXacNhan.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                    TaiKhoanDTO taiKhoanDTO = MainActivity.currentAccount;
+                    taiKhoanDTO.setDiachi(diaChi);
+                    taiKhoanDTO.setSoDienThoai(soDienThoai);
+                    taiKhoanDAO.updateRow(taiKhoanDTO);
+
 
                     DonDatUserDTO objDonDat = new DonDatUserDTO();
                     objDonDat.setIdSanPham(finalIdSp);

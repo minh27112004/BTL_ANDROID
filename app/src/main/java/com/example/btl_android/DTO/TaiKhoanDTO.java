@@ -11,18 +11,21 @@ public class TaiKhoanDTO {
     public String soDienThoai;
     public String gioiTinh;
     public String ngaySinh;
+    public String diachi;
+
 
 
     public TaiKhoanDTO() {
     }
 
-    public TaiKhoanDTO(int idTaiKhoan, String tenUser, String email, String soDienThoai, String gioiTinh, String ngaySinh) {
+    public TaiKhoanDTO(int idTaiKhoan, String tenUser, String email, String soDienThoai, String gioiTinh, String ngaySinh,String diachi) {
         this.idTaiKhoan = idTaiKhoan;
         this.tenUser = tenUser;
         this.email = email;
         this.soDienThoai = soDienThoai;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
+        this.diachi= diachi;
     }
 
     public TaiKhoanDTO(int idTaiKhoan, int idKhachHang, String tenDangNhap, String matKhau) {
@@ -31,6 +34,8 @@ public class TaiKhoanDTO {
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
     }
+
+
 
     public int getIdTaiKhoan() {
         return idTaiKhoan;
@@ -102,5 +107,12 @@ public class TaiKhoanDTO {
 
     public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
+    }
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
     }
 }
