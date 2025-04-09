@@ -1,5 +1,7 @@
 package com.example.btl_android.DTO;
 
+import java.io.Serializable;
+
 public class SanPhamTrangChuUserDTO {
 
     public int idSanPhamUser, idLoaiSanPham;

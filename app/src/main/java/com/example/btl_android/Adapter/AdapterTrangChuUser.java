@@ -53,25 +53,26 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         SanPhamTrangChuUserDTO id = list.get(position);
-
-        String tenImg = list.get(position).getAnhSanPhamUser();
-        int resourceImg = (((Activity) context).getResources().
-                getIdentifier(tenImg, "drawable", ((Activity) context).getPackageName()));
-        holder.ivAnhSanPham.setImageResource(resourceImg);
         holder.tvTenSanPham.setText(list.get(position).getTenSanPhamUser());
         holder.tvGiaSanPham.setText(decimalFormat.format(list.get(position).getGiaSanPhamUser()) + " VND / 1kg");
 
-        String base64 = list.get(position).getAnhSanPhamUser();
-        try {
-            byte[] imageBytes = Base64.decode(base64, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-            if (bitmap != null) {
-                holder.ivAnhSanPham.setImageBitmap(bitmap);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        String tenImg = list.get(position).getAnhSanPhamUser();
+        int resourceId = context.getResources().getIdentifier(tenImg, "drawable", context.getPackageName());
+        if (resourceId != 0) {
+            holder.ivAnhSanPham.setImageResource(resourceId);
         }
-
+        else{
+            String base64 = list.get(position).getAnhSanPhamUser();
+            try {
+                byte[] imageBytes = Base64.decode(base64, Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                if (bitmap != null) {
+                    holder.ivAnhSanPham.setImageBitmap(bitmap);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         gioHangDAO = new GioHangDAO(context);
         listGioHang = gioHangDAO.getAll();
@@ -84,46 +85,44 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                 int donGia = id.getGiaSanPhamUser();
                 String tenAnh = id.getAnhSanPhamUser();
 
-
-                GioHangDTO objGioHang = new GioHangDTO();
-                objGioHang.setTenSanPham(tenSanPham);
-                objGioHang.setGiaSanPham(donGia);
-                objGioHang.setImgSanPham(tenAnh);
-                objGioHang.setSoLuongSanPham(1);
-                objGioHang.setTongTienCuaSp(donGia);
-
-                long kq = gioHangDAO.addRow(objGioHang);
-
-                if (kq > 0) {
-
-                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-
-
-                } else {
-
-                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
-
+                // Kiểm tra trùng lặp
+                boolean isExist = false;
+                for (GioHangDTO item : listGioHang) {
+                    if (item.getTenSanPham().equals(tenSanPham)) {
+                        isExist = true;
+                        break;
+                    }
                 }
+                if (isExist) {
+                    Toast.makeText(context, "Sản phẩm đã có trong giỏ hàng", Toast.LENGTH_SHORT).show();
+                } else {
+                    GioHangDTO objGioHang = new GioHangDTO();
+                    objGioHang.setTenSanPham(tenSanPham);
+                    objGioHang.setGiaSanPham(donGia);
+                    objGioHang.setImgSanPham(tenAnh);
+                    objGioHang.setSoLuongSanPham(1);
+                    objGioHang.setTongTienCuaSp(donGia);
 
+                    long kq = gioHangDAO.addRow(objGioHang);
+                    if (kq > 0) {
+                        Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        listGioHang.add(objGioHang);
 
+                    } else {
+                        Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent intent = new Intent(((Activity) context), ChiTietSanPhamActivity.class);
-//                intent.putExtra("tenSp",id.getTenSanPhamUser());
-//                intent.putExtra("giaSp",id.getGiaSanPhamUser());
-//                intent.putExtra("anhSp",id.getAnhSanPhamUser());
-//                intent.putExtra("moTaSp",id.getMoTaSp());
                 remenberItem(id.getTenSanPhamUser(), id.getGiaSanPhamUser(), id.getAnhSanPhamUser(), id.getMoTaSp());
                 ((Activity) context).startActivity(intent);
-
-
             }
         });
+
 
 
     }

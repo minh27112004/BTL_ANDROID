@@ -23,9 +23,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl_android.DAO.TaiKhoanDAO;
-import com.example.btl_android.DAO.ThongTinKhachHangDAO;
+
 import com.example.btl_android.DTO.TaiKhoanDTO;
-import com.example.btl_android.DTO.ThongTinKhachHangDTO;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.DecimalFormat;
@@ -180,7 +180,7 @@ public class FragGioHangUser extends Fragment {
         }
 
         String tenDangNhap = MainActivity.currentAccount.getTenUser();
-        tvThucDon.setText(hoaDon);//set những món có trong giỏ hàng
+        tvThucDon.setText(hoaDon);
         edTenNguoiNhan.setText(tenDangNhap);// lấy  tên đăng nhập làm tên người nhận
         if(taiKhoanDAO==null){
             Toast.makeText(getContext(),"null ",Toast.LENGTH_SHORT).show();
