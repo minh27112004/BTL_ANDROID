@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.btl_android.ConnectInternet;
 import com.example.btl_android.DAO.TaiKhoanDAO;
 
 import com.example.btl_android.DTO.TaiKhoanDTO;
@@ -67,6 +68,7 @@ public class FragGioHangUser extends Fragment {
     List<SanPhamTrangChuUserDTO> listSanPham;
     SanPhamTrangChuDAO sanPhamTrangChuDAO;
     public TaiKhoanDAO taiKhoanDAO;
+    private ConnectInternet connectInternet;
 
 
 
@@ -78,6 +80,7 @@ public class FragGioHangUser extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        connectInternet= new ConnectInternet(requireContext());
         tvTongTienGioHang = view.findViewById(R.id.tvTongTienGioHang);
         btnDatHang = view.findViewById(R.id.btnDatHangGioHang);
 
@@ -95,10 +98,7 @@ public class FragGioHangUser extends Fragment {
         recyclerView.setAdapter(adapterGioHang);
         adapterGioHang.notifyDataSetChanged();
 
-        //Gọi hàm tính tổng tiền
         tinhTongTien();
-
-        //Gọi hàm đặt hàng
         datHang();
 
 
@@ -109,8 +109,8 @@ public class FragGioHangUser extends Fragment {
         btnDatHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isNetworkAvailable()) {
-                    showNoInternetDialog();
+                if (!connectInternet.isNetworkAvailable()) {
+                    connectInternet.showNoInternetDialog();
                     return;
                 }
 
@@ -120,18 +120,6 @@ public class FragGioHangUser extends Fragment {
             }
         });
     }
-    private void showNoInternetDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Không có kết nối mạng");
-        builder.setMessage("Vui lòng kiểm tra kết nối Internet và thử lại");
-        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
-        builder.setNegativeButton("Cài đặt mạng", (dialog, which) -> {
-            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-            dialog.dismiss();
-        });
-        builder.show();
-    }
-
     private boolean kiemTraShowBottomSheet() {
 
         if (listGioHangFrag.size() == 0) {
@@ -260,7 +248,7 @@ public class FragGioHangUser extends Fragment {
                     btnXacNhan.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                    if (!isNetworkAvailable()) {
+                    if (!connectInternet.isNetworkAvailable()) {
                         Toast.makeText(getContext(), "Mất kết nối mạng. Vui lòng kiểm tra lại!", Toast.LENGTH_LONG).show();
                         return;
                     }
@@ -363,26 +351,7 @@ public class FragGioHangUser extends Fragment {
         }
         return tongTienButtonSheet;
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) requireContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager == null) {
-            return false;
-        }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Network network = connectivityManager.getActiveNetwork();
-            if (network == null) return false;
-            NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
-            return capabilities != null &&
-                    (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
-                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
-                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
-        } else {
-            NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-            return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-        }
-    }
 
 
 }

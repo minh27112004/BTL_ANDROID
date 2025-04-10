@@ -73,8 +73,7 @@ public class DonDatAdminAdapter extends RecyclerView.Adapter<DonDatAdminAdapter.
             }
         });
 
-//        list = donDatUserDAO.donDat();
-//        setData(list);
+
         holder.btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

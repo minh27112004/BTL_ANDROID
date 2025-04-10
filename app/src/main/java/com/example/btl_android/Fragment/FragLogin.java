@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.example.btl_android.ConnectInternet;
 import com.example.btl_android.DAO.TaiKhoanDAO;
 import com.example.btl_android.MainActivity;
 import com.example.btl_android.R;
@@ -28,6 +29,7 @@ public class FragLogin extends Fragment {
     private EditText edTaiKhoan,edMatKhau;
     private AppCompatButton btnDangNhap;
     private TaiKhoanDAO taiKhoanDAO;
+    private ConnectInternet connectInternet;
 
 
     @Nullable
@@ -47,6 +49,7 @@ public class FragLogin extends Fragment {
 
         //Khởi tạo lớp DAO
         taiKhoanDAO = new TaiKhoanDAO(getContext());
+        connectInternet = new ConnectInternet(requireContext());
 
         tvQuenMatKhau.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +65,11 @@ public class FragLogin extends Fragment {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!connectInternet.isNetworkAvailable()){
+                    connectInternet.showNoInternetDialog();
 
-                if (kiemTra()) {
+                } else if (kiemTra())
+                {
 
                     String tenDangNhap = edTaiKhoan.getText().toString();
                     String matKhau  = edMatKhau.getText().toString();
@@ -102,8 +108,8 @@ public class FragLogin extends Fragment {
 
                     Toast.makeText(getContext(), "Mời nhập thông tin", Toast.LENGTH_SHORT).show();
                     return false;
-
                 }
+
 
 
                 return true;

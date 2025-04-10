@@ -1,5 +1,6 @@
 package com.example.btl_android.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.example.btl_android.ConnectInternet;
 import com.example.btl_android.DAO.TaiKhoanDAO;
 import com.example.btl_android.DTO.TaiKhoanDTO;
+import com.example.btl_android.LoginSigUpActivity;
 import com.example.btl_android.R;
 
 
@@ -22,6 +25,8 @@ public class FragSigUp extends Fragment {
 
     private EditText edTenDangNhap,edMatKhau,edNhapLaiMatKhau;
     private AppCompatButton btnDangKy;
+    private ConnectInternet connectInternet;
+    private TaiKhoanDAO taiKhoanDAO;
 
     @Nullable
     @Override
@@ -40,14 +45,18 @@ public class FragSigUp extends Fragment {
         edNhapLaiMatKhau = view.findViewById(R.id.edNhapLaiMatKhauSigUp);
         btnDangKy = view.findViewById(R.id.btnSigUp);
 
-        //Khở tạo lớp DAO
-        TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(getContext());
+
+         taiKhoanDAO = new TaiKhoanDAO(getContext());
+        connectInternet = new ConnectInternet(requireContext());
 
         //set onclick cho nut đăng ký
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!connectInternet.isNetworkAvailable()){
+                    connectInternet.showNoInternetDialog();
+                    return;
+                }
                 if (kiemTra()) {
 
                     String tenDangNhap = edTenDangNhap.getText().toString();
@@ -69,9 +78,10 @@ public class FragSigUp extends Fragment {
                         edNhapLaiMatKhau.setText("");
                         edMatKhau.setText("");
 
+                        Intent intent = new Intent(requireContext(), LoginSigUpActivity.class);
+                        startActivity(intent);
+
                     }
-
-
 
                 }
 
@@ -79,8 +89,6 @@ public class FragSigUp extends Fragment {
 
             //Hàm bắt lỗi
             private boolean kiemTra() {
-
-
                 if (edMatKhau.getText().toString().equals("")
                         ||edNhapLaiMatKhau.getText().toString().equals("")
                         ||edTenDangNhap.getText().toString().equals("")){
@@ -120,7 +128,6 @@ public class FragSigUp extends Fragment {
                     return false;
 
                 }
-
 
                 if (!edMatKhau.getText().toString().equals(edNhapLaiMatKhau.getText().toString())) {
 
