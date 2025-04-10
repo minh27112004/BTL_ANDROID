@@ -39,15 +39,11 @@ public class MainActivity extends AppCompatActivity {
     public static String nameAccount;
 
     private int index = 1; //Khởi tạo biến index bằng 1 để gán cho từng icon có trong navbottom
-    //Gui thong tin ten dang nhap qua user
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
         //Ánh xạ layout navbuttom admin và user
@@ -440,9 +436,10 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-
-
         }
 
     }
+
+
+
 }

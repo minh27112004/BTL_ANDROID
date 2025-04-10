@@ -1,9 +1,17 @@
 package com.example.btl_android.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,21 +106,30 @@ public class FragGioHangUser extends Fragment {
     }
 
     private void datHang() {
-
         btnDatHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (kiemTraShowBottomSheet()) {
-
-                    openShowBottomSheet();
-
+                if (!isNetworkAvailable()) {
+                    showNoInternetDialog();
+                    return;
                 }
 
+                if (kiemTraShowBottomSheet()) {
+                    openShowBottomSheet();
+                }
             }
         });
-
-
+    }
+    private void showNoInternetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Không có kết nối mạng");
+        builder.setMessage("Vui lòng kiểm tra kết nối Internet và thử lại");
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setNegativeButton("Cài đặt mạng", (dialog, which) -> {
+            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            dialog.dismiss();
+        });
+        builder.show();
     }
 
     private boolean kiemTraShowBottomSheet() {
@@ -124,8 +141,6 @@ public class FragGioHangUser extends Fragment {
             return false;
 
         }
-
-
         return true;
 
     }
@@ -245,6 +260,10 @@ public class FragGioHangUser extends Fragment {
                     btnXacNhan.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                    if (!isNetworkAvailable()) {
+                        Toast.makeText(getContext(), "Mất kết nối mạng. Vui lòng kiểm tra lại!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     TaiKhoanDTO taiKhoanDTO = MainActivity.currentAccount;
                     taiKhoanDTO.setDiachi(diaChi);
                     taiKhoanDTO.setSoDienThoai(soDienThoai);
@@ -343,6 +362,26 @@ public class FragGioHangUser extends Fragment {
             tongTienButtonSheet = tongTienButtonSheet + AdapterGioHang.list.get(i).getTongTienCuaSp();
         }
         return tongTienButtonSheet;
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) requireContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Network network = connectivityManager.getActiveNetwork();
+            if (network == null) return false;
+            NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
+            return capabilities != null &&
+                    (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
+        } else {
+            NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        }
     }
 
 

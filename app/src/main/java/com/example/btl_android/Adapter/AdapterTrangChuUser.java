@@ -123,8 +123,6 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
             }
         });
 
-
-
     }
 
     private void remenberItem(String tenSanPhamUser, int giaSanPham, String anhSp, String moTaSp) {
