@@ -1,5 +1,7 @@
 package com.example.btl_android;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,7 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
     private List<TaiKhoanDTO> list;
     private ImageView ivBack;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,10 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
                     String tenDangNhap = getIntent().getStringExtra("tenDangNhap");
                     String matKhauMoi = edMatKhauMoi.getText().toString();
 
+                    if(!taiKhoanDAO.isValidPassword(matKhauMoi)){
+                        Toast.makeText(LayLaiMatKhauActivity.this, "Mật khẩu mới phải có chữ hoa đầu và kí tự đặc biệt!", Toast.LENGTH_SHORT).show();
+                        return ;
+                    }
 
                     int kq = taiKhoanDAO.updateMatKhau(tenDangNhap,matKhauMoi);
 
