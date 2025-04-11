@@ -90,6 +90,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "\n" +
                 "Phần thịt cam màu vàng cam, có vị ngọt hoặc chua ngọt tùy theo giống cam. Thịt cam có nhiều múi, mỗi múi có nhiều tép. Tép cam có vị ngọt thanh, có tác dụng giải khát, bổ sung vitamin C và các dưỡng chất khác cho cơ thể.',7,'Nguyễn Anh','Quả')");
         db.execSQL("insert into tb_san_pham values (10,2,'Quả chuối',14000,'img_qua_chuoi','Chuối là một loại quả giàu dinh dưỡng, chứa nhiều vitamin C, vitamin B6, kali, chất xơ,... Đây là một loại quả tốt cho sức khỏe, có tác dụng tăng cường hệ miễn dịch, chống oxy hóa, ngăn ngừa bệnh tim mạch,...',8,'Nguyễn','Quả')");
+        db.execSQL("insert into tb_san_pham values (19,2,'Củ đậu',13000,'img_cu_dau','Củ đậu hay còn gọi là sắn nước, có vị ngọt, mát, thường ăn sống hoặc ép lấy nước. Củ này giúp thanh nhiệt, giải độc, tốt cho hệ tiêu hóa.',14,'Nguyễn Anh','Củ')");
+        db.execSQL("insert into tb_san_pham values (16,2,'Củ nghệ',22000,'img_cu_nghe','Củ nghệ là loại gia vị phổ biến có màu vàng cam, có tính kháng viêm, chống oxy hóa mạnh. Được dùng trong các món kho, xào và là vị thuốc dân gian trong chữa viêm loét dạ dày.',6,'Nguyễn Anh','Củ')");
 
         String sqlThongTinKhachHang = "CREATE TABLE tb_thong_tin_khach_hang (\n" +
                 "    id_khach_hang  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
