@@ -23,6 +23,8 @@ import java.util.List;
 
 import com.example.btl_android.ChiTietSanPhamActivity;
 import com.example.btl_android.DAO.GioHangDAO;
+import com.example.btl_android.DAO.SanPhamTrangChuDAO;
+import com.example.btl_android.DAO.TrangChuAdminDAO;
 import com.example.btl_android.DTO.GioHangDTO;
 import com.example.btl_android.DTO.SanPhamTrangChuUserDTO;
 import com.example.btl_android.R;
@@ -33,11 +35,16 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     List<SanPhamTrangChuUserDTO> list;
     private GioHangDAO gioHangDAO;
     private List<GioHangDTO> listGioHang;
+    private List<SanPhamTrangChuUserDTO> listAllSp;
+    private SanPhamTrangChuDAO sanPhamTrangChuDAO;
     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+
 
     public AdapterTrangChuUser(Context context, List<SanPhamTrangChuUserDTO> list) {
         this.context = context;
         this.list = list;
+        this.sanPhamTrangChuDAO = new SanPhamTrangChuDAO(context);
+        this.gioHangDAO = new GioHangDAO(context);
     }
 
     @NonNull
@@ -52,17 +59,19 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        SanPhamTrangChuUserDTO id = list.get(position);
-        holder.tvTenSanPham.setText(list.get(position).getTenSanPhamUser());
-        holder.tvGiaSanPham.setText(decimalFormat.format(list.get(position).getGiaSanPhamUser()) + " VND / 1kg");
+        int currentPosition = holder.getAdapterPosition();
+        listAllSp = sanPhamTrangChuDAO.getAll();
+        SanPhamTrangChuUserDTO id = list.get(currentPosition);
+        holder.tvTenSanPham.setText(list.get(currentPosition).getTenSanPhamUser());
+        holder.tvGiaSanPham.setText(decimalFormat.format(list.get(currentPosition).getGiaSanPhamUser()) + " VND / 1kg");
 
-        String tenImg = list.get(position).getAnhSanPhamUser();
+        String tenImg = list.get(currentPosition).getAnhSanPhamUser();
         int resourceId = context.getResources().getIdentifier(tenImg, "drawable", context.getPackageName());
         if (resourceId != 0) {
             holder.ivAnhSanPham.setImageResource(resourceId);
         }
         else{
-            String base64 = list.get(position).getAnhSanPhamUser();
+            String base64 = list.get(currentPosition).getAnhSanPhamUser();
             try {
                 byte[] imageBytes = Base64.decode(base64, Base64.DEFAULT);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
@@ -74,7 +83,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
             }
         }
 
-        gioHangDAO = new GioHangDAO(context);
+
         listGioHang = gioHangDAO.getAll();
         holder.ivIconGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +94,10 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                 int donGia = id.getGiaSanPhamUser();
                 String tenAnh = id.getAnhSanPhamUser();
 
+                if((listAllSp.get(currentPosition).getSoLuongSp())<=0){
+                    Toast.makeText(context, "Sản phẩm tạm hết!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 // Kiểm tra trùng lặp
                 boolean isExist = false;
                 for (GioHangDTO item : listGioHang) {
@@ -124,6 +137,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
         });
 
     }
+
 
     private void remenberItem(String tenSanPhamUser, int giaSanPham, String anhSp, String moTaSp) {
 

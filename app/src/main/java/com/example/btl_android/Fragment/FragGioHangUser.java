@@ -135,7 +135,7 @@ public class FragGioHangUser extends Fragment {
 
     private void openShowBottomSheet() {
 
-        //Khởi tạo view Cho bottom sheet
+
         @SuppressLint("InflateParams")
         View view1 =
                 LayoutInflater.from(requireContext())
@@ -184,7 +184,7 @@ public class FragGioHangUser extends Fragment {
 
         String tenDangNhap = MainActivity.currentAccount.getTenUser();
         tvThucDon.setText(hoaDon);
-        edTenNguoiNhan.setText(tenDangNhap);// lấy  tên đăng nhập làm tên người nhận
+        edTenNguoiNhan.setText(tenDangNhap);
         if(taiKhoanDAO==null){
             Toast.makeText(getContext(),"null ",Toast.LENGTH_SHORT).show();
         }else{
@@ -195,7 +195,7 @@ public class FragGioHangUser extends Fragment {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         tvTongTien.setText("Tổng tiền thanh toán: " + decimalFormat.format(tinhTongTienBottomSheet()) + " VND");//Lấy tổng tiền
-        //Lấy giờ và ngày đặt
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String ngayDat = simpleDateFormat.format(calendar.getTime());
@@ -203,7 +203,7 @@ public class FragGioHangUser extends Fragment {
         String gioDat = simpleDateFormat1.format(calendar.getTime());
 
 
-        //set ngày và giờ đặt cho textview Trong bottom sheet
+
         tvThoiGian.setText("Thời gian: " + gioDat + " " + ngayDat);
 
 
@@ -213,7 +213,7 @@ public class FragGioHangUser extends Fragment {
                 sheetDialog.dismiss();
             }
         });
-        //tạo biến finalHoaDon gán bằng với hóa đơn
+
         String finalHoaDon = hoaDon;
         int finalIdSp = idSp;
         btnXacNhan.setOnClickListener(new View.OnClickListener() {

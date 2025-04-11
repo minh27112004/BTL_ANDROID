@@ -13,7 +13,6 @@ public class SanPhamRauAdminDTO implements Serializable {
     private String nhacungcap;
     private String loai;
 
-
     public SanPhamRauAdminDTO() {
     }
 

@@ -29,14 +29,18 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import com.example.btl_android.DAO.GioHangDAO;
+import com.example.btl_android.DAO.SanPhamTrangChuDAO;
 import com.example.btl_android.DTO.GioHangDTO;
+import com.example.btl_android.DTO.SanPhamTrangChuUserDTO;
 import com.example.btl_android.R;
 
 public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHolder> {
 
     Context context;
     public static List<GioHangDTO> list;
+    private List<SanPhamTrangChuUserDTO> listAllSp;
     GioHangDAO gioHangDAO;
+    SanPhamTrangChuDAO  sanPhamTrangChuDAO;
 
     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
@@ -44,6 +48,8 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
     public AdapterGioHang(Context context, List<GioHangDTO> list) {
         this.context = context;
         this.list = list;
+        gioHangDAO = new GioHangDAO(context);
+        sanPhamTrangChuDAO = new SanPhamTrangChuDAO(context);
     }
 
     @NonNull
@@ -56,9 +62,9 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-
+        listAllSp = sanPhamTrangChuDAO.getAll();
         GioHangDTO id = list.get(position);
-        gioHangDAO = new GioHangDAO(context);
+
         list = gioHangDAO.getAll();
 
         holder.tvTenSanPham.setText(list.get(position).getTenSanPham());
@@ -148,7 +154,7 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
             @Override
             public void onClick(View v) {
 
-                if (id.getSoLuongSanPham() < 8) {
+                if (id.getSoLuongSanPham() < 10  &&  id.getSoLuongSanPham() < listAllSp.get(position).getSoLuongSp()) {
 
                     //setThemSoLuongSanPham
                     int soLuongSanPhamMoi = id.getSoLuongSanPham() + 1;
@@ -166,6 +172,10 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
                     list.addAll(gioHangDAO.getAll());
                     tinhTongTien();
 
+                }
+                else{
+                    Toast.makeText(v.getContext(),"Mỗi sản phẩm chỉ được chọn tối đa 10kg hoặc đã bị quá số lượng kho!!",Toast.LENGTH_SHORT ).show();
+                    return;
                 }
 
             }

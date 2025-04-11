@@ -17,15 +17,11 @@ public class ThongKeDAO {
     }
 
     public int getDoanhThu(String ngaybatdau, String ngayketthuc){
-//        ngaybatdau = ngaybatdau.replace("/", "");
-//        ngayketthuc =  ngayketthuc.replace("/", "");
-//        SQLiteDatabase  sqLiteDatabase = myDBHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(tong_tien) FROM tb_hoa_don WHERE ngay_dat  BETWEEN ? AND ? AND trang_thai LIKE '%Đã thanh toán%' ",new String[]{ngaybatdau, ngayketthuc});
         ArrayList<Integer> list = new ArrayList<>();
 
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-          //  return cursor.getInt(0);
             while (!cursor.isAfterLast()){
                 try {
                     int doanhthu = cursor.getInt(0);

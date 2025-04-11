@@ -3,11 +3,13 @@ package com.example.btl_android.DAO;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.btl_android.DBHelper.MyDBHelper;
+import com.example.btl_android.DTO.GioHangDTO;
 import com.example.btl_android.DTO.SanPhamTrangChuUserDTO;
 
 public class SanPhamTrangChuDAO {
@@ -105,10 +107,11 @@ public class SanPhamTrangChuDAO {
             }
         }
 
-
         return list;
 
     }
+
+
 
 
 }
