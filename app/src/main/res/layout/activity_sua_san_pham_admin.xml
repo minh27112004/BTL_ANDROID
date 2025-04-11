@@ -78,6 +78,28 @@
                     android:layout_marginTop="10dp"
                     android:hint="Nhập giá sản phẩm"
                     android:inputType="number"/>
+                <EditText
+                    android:id="@+id/edtsuasoluongthem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_editttext_themsp"
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="serif"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nhập số lượng cần thêm (nếu có)"
+                    android:inputType="number"/>
+                <EditText
+                    android:id="@+id/edtsuasoluonggiam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_editttext_themsp"
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="serif"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nhập số lượng cần giảm (nếu có)"
+                    android:inputType="number"/>
 
             </LinearLayout>
 

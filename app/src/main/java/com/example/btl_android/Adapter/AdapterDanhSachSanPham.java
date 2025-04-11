@@ -108,10 +108,7 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
             public void onClick(View v) {
 
                 Intent intent = new Intent(((Activity) context), ChiTietSanPhamActivity.class);
-//                intent.putExtra("tenSp", id.getTen_san_pham());
-//                intent.putExtra("giaSp", id.getDon_gia());
-//                intent.putExtra("anhSp", id.getImg_url());
-//                intent.putExtra("moTaSp", id.getMo_ta());
+
                 remenBerProduct(id.getTen_san_pham(), id.getDon_gia(), id.getImg_url(), id.getMo_ta());
                 ((Activity) context).startActivity(intent);
 

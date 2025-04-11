@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import com.example.btl_android.Adapter.AdapterDanhSachSanPhamQua;
+import com.example.btl_android.Adapter.AdapterDanhSachSanPham;
 import com.example.btl_android.DAO.DanhSachSanPhamDAO;
 import com.example.btl_android.DTO.DanhSachSanPhamDTO;
 import com.example.btl_android.R;
@@ -39,7 +39,7 @@ public class FragQuaDanhSachSanPhamUse extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerDanhSachSanPhamQuaUse.setLayoutManager(gridLayoutManager);
 
-        AdapterDanhSachSanPhamQua adapterDanhSachSanPhamQua = new AdapterDanhSachSanPhamQua(list, getContext());
+        AdapterDanhSachSanPham adapterDanhSachSanPhamQua = new AdapterDanhSachSanPham(list, getContext());
         recyclerDanhSachSanPhamQuaUse.setAdapter(adapterDanhSachSanPhamQua);
         adapterDanhSachSanPhamQua.notifyDataSetChanged();
     }

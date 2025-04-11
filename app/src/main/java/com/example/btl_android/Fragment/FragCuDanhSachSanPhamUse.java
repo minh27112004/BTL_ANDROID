@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import com.example.btl_android.Adapter.AdapterDanhSachSanPhamCu;
+import com.example.btl_android.Adapter.AdapterDanhSachSanPham;
 import com.example.btl_android.DAO.DanhSachSanPhamDAO;
 import com.example.btl_android.DTO.DanhSachSanPhamDTO;
 import com.example.btl_android.R;
@@ -40,7 +40,7 @@ public class FragCuDanhSachSanPhamUse extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerviewDanhSachSanPhamCu.setLayoutManager(gridLayoutManager);
 
-        AdapterDanhSachSanPhamCu adapterDanhSachSanPhamCu = new AdapterDanhSachSanPhamCu(list, getContext());
+        AdapterDanhSachSanPham adapterDanhSachSanPhamCu = new AdapterDanhSachSanPham(list, getContext());
         recyclerviewDanhSachSanPhamCu.setAdapter(adapterDanhSachSanPhamCu);
     }
 }

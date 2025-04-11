@@ -16,8 +16,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-import com.example.btl_android.Adapter.AdapterFoodAdmin;
-import com.example.btl_android.Adapter.AdapterSanPhamCuAdmin;
 import com.example.btl_android.Adapter.AdapterSanPhamRauAdmin;
 import com.example.btl_android.DAO.TrangChuAdminDAO;
 import com.example.btl_android.DTO.SanPhamRauAdminDTO;
@@ -25,8 +23,9 @@ import com.example.btl_android.R;
 import com.example.btl_android.SuaSanPhamAdmin;
 import com.example.btl_android.ThemSanPhamAdmin;
 
-public class FragmentQuaTrangChuAdmin extends Fragment implements AdapterSanPhamCuAdmin.SanPhamAdminInterface, AdapterSanPhamRauAdmin.SanPhamAdminInterface {
+public class FragmentQuaTrangChuAdmin extends Fragment implements  AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
+    private static final int REQUEST_EDIT_PRODUCT = 100;
     public static RecyclerView recyclerViewQuaAdmin;
     private FloatingActionButton fltAddQuaAdmin;
     private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
@@ -62,15 +61,16 @@ public class FragmentQuaTrangChuAdmin extends Fragment implements AdapterSanPham
         ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamQuaAdmin();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerViewQuaAdmin.setLayoutManager(gridLayoutManager);
-        AdapterFoodAdmin adapterFoodAdmin = new AdapterFoodAdmin(list, getContext(), listener);
+        AdapterSanPhamRauAdmin adapterFoodAdmin = new AdapterSanPhamRauAdmin(list, getContext(), listener);
         recyclerViewQuaAdmin.setAdapter(adapterFoodAdmin);
         adapterFoodAdmin.notifyDataSetChanged();
-//        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
+
     }
 
     public void onResume() {
         super.onResume();
         intiData();
+
     }
 
     @Override
@@ -79,4 +79,6 @@ public class FragmentQuaTrangChuAdmin extends Fragment implements AdapterSanPham
         intent.putExtra("dto", dto);
         requireActivity().startActivity(intent);
     }
+
+
 }

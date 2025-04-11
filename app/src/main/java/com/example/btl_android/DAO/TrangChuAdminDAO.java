@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import com.example.btl_android.DTO.SanPhamRauAdminDTO;
 
 public class TrangChuAdminDAO {
     MyDBHelper myDBHelper;
+
 
     public TrangChuAdminDAO(Context context) {
         myDBHelper = new MyDBHelper(context);
@@ -30,7 +32,7 @@ public class TrangChuAdminDAO {
         return list;
     }
 
-    public boolean ThemSanPham(String tensanpham, int dongia, String img, String mota, String loai, String nhacungcap) {
+    public boolean ThemSanPham(String tensanpham, int dongia, String img, String mota, String loai, String nhacungcap,int soluong) {
         SQLiteDatabase sqLiteDatabase = myDBHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -39,6 +41,7 @@ public class TrangChuAdminDAO {
         values.put("img_url", img);
         values.put("mo_ta", mota);
         values.put("loai", loai);
+        values.put("so_luong", soluong);
         values.put("nhacungcap", nhacungcap);
 
         long check = sqLiteDatabase.insert("tb_san_pham", null, values);
@@ -49,21 +52,58 @@ public class TrangChuAdminDAO {
         }
     }
 
-    public boolean SuaSanPham(int id_san_pham, String tensanpham, int dongia,String mo_ta, String loai){
+    public boolean SuaSanPham(int id_san_pham, String tensanpham, int dongia, String mo_ta, String loai, int soluongthem, int soluonggiam) {
         SQLiteDatabase sqLiteDatabase = myDBHelper.getWritableDatabase();
+        int soLuongHienTai = 0;
+
+        // Lấy số lượng hiện tại
+        Cursor cursor = sqLiteDatabase.query(
+                "tb_san_pham",
+                new String[]{"so_luong"},
+                "id_san_pham = ?",
+                new String[]{String.valueOf(id_san_pham)},
+                null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex("so_luong");
+            if (columnIndex >= 0) {
+                soLuongHienTai = cursor.getInt(columnIndex);
+            } else {
+                Log.e("SuaSanPham", "Không tìm thấy cột 'so_luong' trong kết quả truy vấn");
+                cursor.close();
+                return false;
+            }
+            cursor.close();
+        } else {
+            if (cursor != null) cursor.close();
+            Log.e("SuaSanPham", "Không tìm thấy sản phẩm với ID: " + id_san_pham);
+            return false;
+        }
+
+
+        int soLuongMoi = soLuongHienTai + soluongthem - soluonggiam;
+        if (soLuongMoi < 0) soLuongMoi = 0; // Tránh âm số
+
+        // Cập nhật dữ liệu
         ContentValues values = new ContentValues();
-        values.put(" ten_san_pham", tensanpham);
-        values.put(" don_gia ", dongia);
+        values.put("ten_san_pham", tensanpham);
+        values.put("don_gia", dongia);
         values.put("mo_ta", mo_ta);
         values.put("loai", loai);
+        values.put("so_luong", soLuongMoi);
 
-        int check = sqLiteDatabase.update("tb_san_pham",values,"  id_san_pham =?",new String[]{String.valueOf(id_san_pham)});
+        int rowsAffected = sqLiteDatabase.update(
+                "tb_san_pham",
+                values,
+                "id_san_pham = ?",
+                new String[]{String.valueOf(id_san_pham)}
+        );
 
-        getDSSanPhamAdmin();
-        return check !=0;
+        return rowsAffected > 0;
     }
-    // Trong TrangChuAdminDAO.java
-    // Câu lệnh xóa sản phẩm
+
+
+
     public boolean XoaSanPham(int idSanPham) {
         SQLiteDatabase db = myDBHelper.getWritableDatabase();
         int result = db.delete("tb_san_pham", "id_san_pham = ?", new String[]{String.valueOf(idSanPham)});

@@ -1,5 +1,6 @@
 package com.example.btl_android;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.example.btl_android.DBHelper.MyDBHelper;
 import com.example.btl_android.DTO.SanPhamRauAdminDTO;
 
 public class SuaSanPhamAdmin extends AppCompatActivity {
-    EditText edtSuatensp, edtSuaGiasp, edtSuaNhaCungCap, edtSuaMoTa;
+    EditText edtSuatensp, edtSuaGiasp, edtSuaNhaCungCap, edtSuaMoTa,edtsoluongthem,edtsoluonggiam;
     AppCompatButton btnSuasp, btnXoaSp;
     Spinner spnCategorySuaSp;
     ImageView ivBack;
@@ -41,6 +42,8 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
         edtSuaNhaCungCap = findViewById(R.id.edtSuaNhaCungCap);
         edtSuaMoTa = findViewById(R.id.edtSuaMoTa);
         spnCategorySuaSp = findViewById(R.id.spnCategorySuaSp);
+        edtsoluongthem = findViewById(R.id.edtsuasoluongthem);
+        edtsoluonggiam = findViewById(R.id.edtsuasoluonggiam);
         ivBack = findViewById(R.id.ivBackSuaSp);
         btnSuasp = findViewById(R.id.btnSuaSp);
         btnXoaSp = findViewById(R.id.btnXoaSp);
@@ -63,11 +66,20 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
                 String newPrice = edtSuaGiasp.getText().toString().trim();
                 String mota = edtSuaMoTa.getText().toString().trim();
 
+                String slthem = edtsoluongthem.getText().toString().trim();
+                String slgiam = edtsoluonggiam.getText().toString().trim();
+
+                if (slthem.isEmpty() || slgiam.isEmpty()) {
+                    Toast.makeText(SuaSanPhamAdmin.this, "Vui lòng nhập số lượng", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (newName.isEmpty() || newPrice.isEmpty()) {
                     Toast.makeText(SuaSanPhamAdmin.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice), mota, getTenLoai((int) spnCategorySuaSp.getSelectedItemId()));
+                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice), mota, getTenLoai((int) spnCategorySuaSp.getSelectedItemId()),Integer.parseInt(slthem),Integer.parseInt(slgiam));
                     if (result) {
+                        setResult(Activity.RESULT_OK);
                         Toast.makeText(SuaSanPhamAdmin.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         onBackPressed();
                     } else {
@@ -96,7 +108,7 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                finish();
+
             }
         });
     }
@@ -139,6 +151,7 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
             edtSuaGiasp.setText(String.valueOf(dto.getDon_gia()));
             edtSuaNhaCungCap.setText(dto.getNhacungcap());
             edtSuaMoTa.setText(dto.getMo_ta());
+
 
             // Set vị trí spinner theo loại sản phẩm
             switch (dto.getLoai()) {

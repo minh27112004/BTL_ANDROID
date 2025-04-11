@@ -38,9 +38,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlSanPham);
         db.execSQL("insert into tb_san_pham values (2,2,'Quả bơ',17000,'img_qua_bo','Quả bơ là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm:\n" +
                 "\n" +
-                "Chất béo không bão hòa đơn: Đây là loại chất béo tốt cho sức khỏe, giúp giảm nguy cơ mắc bệnh tim mạch, đột quỵ, và tiểu đường. Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa. Vitamin E: Có tác dụng chống oxy hóa, bảo vệ tế bào. Kali: Có tác dụng điều hòa huyết áp. Magie: Có tác dụng tốt cho xương khớp. Folate: Có tác dụng tốt cho phụ nữ mang thai. Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',5,'Nguyễn Toàn','Quả')");
-        db.execSQL("insert into tb_san_pham values (1,2,'Quả táo đỏ',13000,'img_qua_tao','Quả táo là một loại quả có giá trị dinh dưỡng cao. Quả táo chứa nhiều vitamin và khoáng chất, bao gồm: Vitamin C: có tác dụng tăng cường hệ miễn dịch, chống oxy hóa, Vitamin A: có tác dụng tốt cho mắt, da, và tóc, Vitamin E: có tác dụng chống oxy hóa, bảo vệ tế bào, Kali: có tác dụng điều hòa huyết áp, Chất xơ: có tác dụng hỗ trợ tiêu hóa, giảm cholesterol',6,'Nguyễn Công','Quả')");
-        db.execSQL("insert into tb_san_pham values (3,2,'Rau cải thảo',15000,'img_cai_thao_trang_chu','Rau cải thảo là một loại rau có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm: Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa. Vitamin A: Có tác dụng tốt cho mắt, da, và tóc. Vitamin K: Có tác dụng đông máu, giúp ngăn ngừa chảy máu. Sắt: Có tác dụng tạo máu, giúp phòng ngừa thiếu máu. Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',5,'Nguyễn Duy','Rau')");
+                "Chất béo không bão hòa đơn: Đây là loại chất béo tốt cho sức khỏe, giúp giảm nguy cơ mắc bệnh tim mạch, đột quỵ, và tiểu đường. Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa. Vitamin E: Có tác dụng chống oxy hóa, bảo vệ tế bào. Kali: Có tác dụng điều hòa huyết áp. Magie: Có tác dụng tốt cho xương khớp. Folate: Có tác dụng tốt cho phụ nữ mang thai. Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',100,'Nguyễn Toàn','Quả')");
+        db.execSQL("insert into tb_san_pham values (1,2,'Quả táo đỏ',13000,'img_qua_tao','Quả táo là một loại quả có giá trị dinh dưỡng cao. Quả táo chứa nhiều vitamin và khoáng chất, bao gồm: Vitamin C: có tác dụng tăng cường hệ miễn dịch, chống oxy hóa, Vitamin A: có tác dụng tốt cho mắt, da, và tóc, Vitamin E: có tác dụng chống oxy hóa, bảo vệ tế bào, Kali: có tác dụng điều hòa huyết áp, Chất xơ: có tác dụng hỗ trợ tiêu hóa, giảm cholesterol',100,'Nguyễn Công','Quả')");
+        db.execSQL("insert into tb_san_pham values (3,2,'Rau cải thảo',15000,'img_cai_thao_trang_chu','Rau cải thảo là một loại rau có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm: Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa. Vitamin A: Có tác dụng tốt cho mắt, da, và tóc. Vitamin K: Có tác dụng đông máu, giúp ngăn ngừa chảy máu. Sắt: Có tác dụng tạo máu, giúp phòng ngừa thiếu máu. Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',100,'Nguyễn Duy','Rau')");
         db.execSQL("insert into tb_san_pham values (4,2,'Nho hồng nhật',18000,'img_qua_nho','Quả nho là một loại quả có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm:\n" +
                 "\n" +
                 "Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa.\n" +
@@ -60,21 +60,21 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "Magie: Có tác dụng tốt cho xương khớp.\n" +
                 "Folate: Có tác dụng tốt cho phụ nữ mang thai.\n" +
                 "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.\n" +
-                "Khoáng chất: Nho có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, sắt, kẽm,...',5,'Nguyễn Kiên','Quả')");
+                "Khoáng chất: Nho có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, sắt, kẽm,...',100,'Nguyễn Kiên','Quả')");
         db.execSQL("insert into tb_san_pham values (6,2,'Rau cải chíp',10000,'img_cai_chip_trang_chu','Cải chíp là một loại rau có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm:\n" +
                 "\n" +
                 "Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa.\n" +
                 "Vitamin A: Có tác dụng tốt cho mắt, da, và tóc.\n" +
                 "Vitamin K: Có tác dụng đông máu, giúp ngăn ngừa chảy máu.\n" +
                 "Sắt: Có tác dụng tạo máu, giúp phòng ngừa thiếu máu.\n" +
-                "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',5,'Nguyễn Nam','Rau')");
+                "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.',100,'Nguyễn Nam','Rau')");
         db.execSQL("insert into tb_san_pham values (7,2,'Bắp cải',150000,'img_bap_cai_trang_chu','Rau bắp cải là một loại rau có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm:\n" +
                 "\n" +
                 "Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa.\n" +
                 "Vitamin K: Có tác dụng đông máu, giúp ngăn ngừa chảy máu.\n" +
                 "Sắt: Có tác dụng tạo máu, giúp phòng ngừa thiếu máu.\n" +
                 "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.\n" +
-                "Khoáng chất: Bắp cải có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, canxi, kẽm,...',5,'Nguyễn Cường','Rau')");
+                "Khoáng chất: Bắp cải có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, canxi, kẽm,...',20,'Nguyễn Cường','Rau')");
         db.execSQL("insert into tb_san_pham values (8,2,'Cà chua',10000,'img_ca_chua','Cà chua là một loại quả có giá trị dinh dưỡng cao, chứa nhiều chất dinh dưỡng, bao gồm:\n" +
                 "\n" +
                 "Vitamin C: Có tác dụng tăng cường hệ miễn dịch, chống oxy hóa.\n" +
@@ -82,7 +82,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "Vitamin K: Có tác dụng đông máu, giúp ngăn ngừa chảy máu.\n" +
                 "Lycopene: Là một chất chống oxy hóa mạnh, có tác dụng ngăn ngừa ung thư, tim mạch, và các bệnh mãn tính khác.\n" +
                 "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.\n" +
-                "Khoáng chất: Cà chua có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, canxi, kẽm,...',6,'Nguyễn Huy','Quả')");
+                "Khoáng chất: Cà chua có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, canxi, kẽm,...',3,'Nguyễn Huy','Quả')");
         db.execSQL("insert into tb_san_pham values (9,2,'Quả cam',13000,'img_qua_cam','\n" +
                 "Cam là một loại quả có múi, có nguồn gốc từ Đông Nam Á. Đây là một loại quả phổ biến trên thế giới, được trồng ở nhiều quốc gia khác nhau, trong đó có Việt Nam.\n" +
                 "\n" +

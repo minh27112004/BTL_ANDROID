@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.btl_android.Adapter.AdapterFoodAdmin;
-import com.example.btl_android.Adapter.AdapterSanPhamCuAdmin;
 import com.example.btl_android.Adapter.AdapterSanPhamRauAdmin;
 import com.example.btl_android.Adapter.AdapterViewPagerTrangChu;
 import com.google.android.material.tabs.TabLayout;
@@ -125,7 +123,7 @@ public class FragmentTrangChuAdmin extends Fragment {
 
         if (list.size() > 0) {
 
-            AdapterFoodAdmin adapterFoodAdmin = new AdapterFoodAdmin(list, getContext());
+            AdapterSanPhamRauAdmin adapterFoodAdmin = new AdapterSanPhamRauAdmin(list, getContext());
             FragmentQuaTrangChuAdmin.recyclerViewQuaAdmin.setAdapter(adapterFoodAdmin);
             adapterFoodAdmin.notifyDataSetChanged();
 
@@ -139,7 +137,7 @@ public class FragmentTrangChuAdmin extends Fragment {
 
         if (list.size() > 0) {
 
-            AdapterSanPhamCuAdmin adapterSanPhamCuAdmin = new AdapterSanPhamCuAdmin(list, getContext());
+            AdapterSanPhamRauAdmin adapterSanPhamCuAdmin = new AdapterSanPhamRauAdmin(list, getContext());
             FragmentCuTrangChuAdmin.recyclerViewCuAdmin.setAdapter(adapterSanPhamCuAdmin);
             adapterSanPhamCuAdmin.notifyDataSetChanged();
 

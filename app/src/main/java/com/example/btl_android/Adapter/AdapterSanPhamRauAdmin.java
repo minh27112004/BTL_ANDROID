@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +62,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
         String nameImg = list.get(position).getImg_url();
         int resourceImg = ((Activity) context).getResources().getIdentifier(nameImg, "drawable", ((Activity) context).getPackageName());
         holder.imgDanhSachSanPhamAdmin.setImageResource(resourceImg);
+        holder.tvsoluong.setText("SL: "+list.get(position).getSo_luong()+"Kg");
 
         String base64 = list.get(position).getImg_url();
         try {
@@ -80,10 +82,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
         holder.ivSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, SuaSanPhamAdmin.class);
-//                context.startActivity(intent);
                 listener.updateSanPham(list.get(position));
-
             }
         });
 
@@ -91,7 +90,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(v.getContext(), "sl: "+id.getSo_luong(), Toast.LENGTH_SHORT).show();
                 remenBerProduct(id.getTen_san_pham(), id.getDon_gia(), id.getImg_url(), id.getMo_ta());
                 context.startActivity(new Intent(context, ChiTietSanPhamActivity.class));
 
@@ -111,9 +110,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
         editor.putInt("doGia", donGia);
         editor.putString("anhSp", imgUrl);
         editor.putString("moTa", moTa);
-
         editor.apply();
-
 
     }
 
@@ -124,7 +121,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
 
     public class ViewHolderAdmin extends RecyclerView.ViewHolder {
         ImageView imgDanhSachSanPhamAdmin, ivSua;
-        TextView tvTenDanhSachSanPhamAdmin, tvGiaSanPhamDanhSachSanPhamAdmin;
+        TextView tvTenDanhSachSanPhamAdmin, tvGiaSanPhamDanhSachSanPhamAdmin,tvsoluong;
 
 
         public ViewHolderAdmin(@NonNull View itemView) {
@@ -133,6 +130,7 @@ public class AdapterSanPhamRauAdmin extends RecyclerView.Adapter<AdapterSanPhamR
             tvTenDanhSachSanPhamAdmin = itemView.findViewById(R.id.tvTenDanhSachSanPhamAdmin);
             tvGiaSanPhamDanhSachSanPhamAdmin = itemView.findViewById(R.id.tvGiaSanPhamDanhSachSanPhamAdmin);
             ivSua = itemView.findViewById(R.id.ivIconSuaItem);
+            tvsoluong = itemView.findViewById(R.id.tvsoluong);
 
 
         }

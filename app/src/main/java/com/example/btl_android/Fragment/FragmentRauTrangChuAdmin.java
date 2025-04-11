@@ -74,7 +74,6 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
         AdapterSanPhamRauAdmin adapterSanPhamRauAdmin = new AdapterSanPhamRauAdmin(list, getContext(), listener);
         recyclerViewRauAdmin.setAdapter(adapterSanPhamRauAdmin);
         adapterSanPhamRauAdmin.notifyDataSetChanged();
-//        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
     }
 
     public void onResume() {

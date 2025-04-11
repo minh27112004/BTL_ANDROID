@@ -6,7 +6,7 @@
     app:cardCornerRadius="8dp"
     android:backgroundTint="#DFF8EF"
     android:layout_gravity="center_horizontal"
-    android:layout_height="190dp">
+    android:layout_height="230dp">
 
 
     <LinearLayout
@@ -80,6 +80,16 @@
 
 
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvsoluong"
+            android:text="SL: 8 (kg)"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            />
 
 
 

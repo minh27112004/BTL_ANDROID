@@ -79,6 +79,17 @@
                     android:textColor="@color/black"
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/edtsoluong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_editttext_themsp"
+                    android:padding="16dp"
+                    android:inputType="number"
+                    android:hint="Nhập số lượng sản phẩm (kg)"
+                    android:textColor="@color/black"
+                    android:fontFamily="serif"
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 

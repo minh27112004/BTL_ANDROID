@@ -34,7 +34,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
 
     private ImageView imgThemsp,ivBack;
     private TextView captureTxt;
-    EditText edtThemtensp, edtThemgiasp,edtNhaCungCap,edtMoTa;
+    EditText edtThemtensp, edtThemgiasp,edtNhaCungCap,edtMoTa,edtsoluong;
     AppCompatButton btnThemsp;
     TrangChuAdminDAO trangChuAdminDAO;
     Spinner spnCategoryThemSp;
@@ -80,6 +80,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
         edtThemgiasp = findViewById(R.id.edtThemGiaSp);
         edtThemtensp = findViewById(R.id.edtThemTenSp);
         edtNhaCungCap = findViewById(R.id.edtNhaCungCap);
+        edtsoluong = findViewById(R.id.edtsoluong);
         edtMoTa = findViewById(R.id.edtMoTa);
         btnThemsp = findViewById(R.id.btnThemSp);
         spnCategoryThemSp = findViewById(R.id.spnCategoryThemSp);
@@ -91,6 +92,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
             public void onClick(View v) {
                 String tensp = edtThemtensp.getText().toString().trim();
                 int giasp = Integer.parseInt(edtThemgiasp.getText().toString().trim());
+                int soluongsp = Integer.parseInt(edtsoluong.getText().toString().trim());
                 String tenloai = (String) spnCategoryThemSp.getSelectedItem();
                 String nhacungcap = edtNhaCungCap.getText().toString().trim();
                 String mota = edtMoTa.getText().toString().trim();
@@ -102,7 +104,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
                     Toast.makeText(ThemSanPhamAdmin.this, "Vui lòng chọn ảnh", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    boolean check = trangChuAdminDAO.ThemSanPham(tensp,giasp,base64,mota,tenloai,nhacungcap);
+                    boolean check = trangChuAdminDAO.ThemSanPham(tensp,giasp,base64,mota,tenloai,nhacungcap,soluongsp);
 
                     if(check){
                         Toast.makeText(ThemSanPhamAdmin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();

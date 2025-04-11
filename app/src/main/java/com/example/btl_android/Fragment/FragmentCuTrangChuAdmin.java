@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.btl_android.Adapter.AdapterSanPhamCuAdmin;
 import com.example.btl_android.Adapter.AdapterSanPhamRauAdmin;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,7 +23,7 @@ import com.example.btl_android.R;
 import com.example.btl_android.SuaSanPhamAdmin;
 import com.example.btl_android.ThemSanPhamAdmin;
 
-public class FragmentCuTrangChuAdmin extends Fragment implements AdapterSanPhamCuAdmin.SanPhamAdminInterface, AdapterSanPhamRauAdmin.SanPhamAdminInterface {
+public class FragmentCuTrangChuAdmin extends Fragment implements  AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
     public static RecyclerView recyclerViewCuAdmin;
     private FloatingActionButton fltAddCuAdmin;
@@ -61,10 +60,11 @@ public class FragmentCuTrangChuAdmin extends Fragment implements AdapterSanPhamC
         ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamCuAdmin();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerViewCuAdmin.setLayoutManager(gridLayoutManager);
-        AdapterSanPhamCuAdmin adapterSanPhamCuAdmin = new AdapterSanPhamCuAdmin(list, getContext(), listener);
+        AdapterSanPhamRauAdmin adapterSanPhamCuAdmin = new AdapterSanPhamRauAdmin(list, getContext(), listener);
         recyclerViewCuAdmin.setAdapter(adapterSanPhamCuAdmin);
         adapterSanPhamCuAdmin.notifyDataSetChanged();
-//        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
+
+
     }
 
     public void onResume() {
