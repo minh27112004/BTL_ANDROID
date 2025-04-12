@@ -132,7 +132,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(((Activity) context), ChiTietSanPhamActivity.class);
-                remenberItem(id.getTenSanPhamUser(), id.getGiaSanPhamUser(), id.getAnhSanPhamUser(), id.getMoTaSp());
+                remenberItem(id.getIdSanPhamUser(),id.getTenSanPhamUser(), id.getGiaSanPhamUser(), id.getAnhSanPhamUser(), id.getMoTaSp());
                 ((Activity) context).startActivity(intent);
             }
         });
@@ -140,14 +140,14 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     }
 
 
-    private void remenberItem(String tenSanPhamUser, int giaSanPham, String anhSp, String moTaSp) {
+    private void remenberItem(int idSp,String tenSanPhamUser, int giaSanPham, String anhSp, String moTaSp) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("PRODUCT", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("tenSp", tenSanPhamUser);
         editor.putInt("doGia", giaSanPham);
-        editor.putInt("idSp", giaSanPham);
+        editor.putInt("idSp", idSp);
         editor.putString("anhSp", anhSp);
         editor.putString("moTa", moTaSp);
 

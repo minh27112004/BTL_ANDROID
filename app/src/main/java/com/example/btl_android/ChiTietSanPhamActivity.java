@@ -62,6 +62,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
         String tenSanPham = sharedPreferences.getString("tenSp", "");
         int giaSp = sharedPreferences.getInt("doGia", 0);
+        int idSp = sharedPreferences.getInt("idSp", 0);
         String anhSp = sharedPreferences.getString("anhSp", "");
         String moTaSp = sharedPreferences.getString("moTa", "");
 
@@ -85,31 +86,48 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         layoutThemVaoGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                GioHangDTO objGioHang = new GioHangDTO();
-                objGioHang.setTenSanPham(tenSanPham);
-                objGioHang.setGiaSanPham(giaSp);
-                objGioHang.setSoLuongSanPham(1);
-                objGioHang.setImgSanPham(anhSp);
-                objGioHang.setTongTienCuaSp(giaSp);
-
-                long kq = gioHangDAO.addRow(objGioHang);
-
-                if (kq > 0) {
-
-                    Toast.makeText(ChiTietSanPhamActivity.this, "Thêm thành công"
-                            , Toast.LENGTH_SHORT).show();
-                    listGioHang.clear();
-                    listGioHang.addAll(gioHangDAO.getAll());
-
+                if (sanPhamTrangChuDAO.getSoLuongHienTai(idSp) <= 0) {
+                    Toast.makeText(ChiTietSanPhamActivity.this, "Sản phẩm tạm hết!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // Kiểm tra trùng lặp
+                boolean isExist = false;
+                for (GioHangDTO item : listGioHang) {
+                    if (item.getTenSanPham().equals(tenSanPham)) {
+                        isExist = true;
+                        break;
+                    }
+                }
+                if (isExist) {
+                    Toast.makeText(ChiTietSanPhamActivity.this, "Sản phẩm đã có trong giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Toast.makeText(ChiTietSanPhamActivity.this, "Thêm thất bại"
-                            , Toast.LENGTH_SHORT).show();
+                    GioHangDTO objGioHang = new GioHangDTO();
+                    objGioHang.setTenSanPham(tenSanPham);
+                    objGioHang.setIdSanPham(idSp);
+                    objGioHang.setGiaSanPham(giaSp);
+                    objGioHang.setSoLuongSanPham(1);
+                    objGioHang.setImgSanPham(anhSp);
+                    objGioHang.setTongTienCuaSp(giaSp);
+
+                    long kq = gioHangDAO.addRow(objGioHang);
+
+                    if (kq > 0) {
+
+                        Toast.makeText(ChiTietSanPhamActivity.this, "Thêm thành công"
+                                , Toast.LENGTH_SHORT).show();
+                        listGioHang.clear();
+                        listGioHang.addAll(gioHangDAO.getAll());
+
+                    } else {
+
+                        Toast.makeText(ChiTietSanPhamActivity.this, "Thêm thất bại"
+                                , Toast.LENGTH_SHORT).show();
+
+                    }
+
 
                 }
-
-
             }
         });
 

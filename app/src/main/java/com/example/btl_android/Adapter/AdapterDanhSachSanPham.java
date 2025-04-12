@@ -88,7 +88,7 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
                 int giaSp = id.getDon_gia();
                 String tenAnh = id.getImg_url();
 
-                if((listAllSp.get(currentPosition).getSoLuongSp())<=0){
+                if( sanPhamTrangChuDAO.getSoLuongHienTai(id.getId_san_pham())<=0){
                     Toast.makeText(context, "Sản phẩm tạm hết!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -105,6 +105,7 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
                 } else {
                     GioHangDTO objGioHang = new GioHangDTO();
                     objGioHang.setTenSanPham(tenSp);
+                    objGioHang.setIdSanPham(id.getId_san_pham());
                     objGioHang.setGiaSanPham(giaSp);
                     objGioHang.setImgSanPham(tenAnh);
                     objGioHang.setSoLuongSanPham(1);
@@ -131,7 +132,7 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
 
                 Intent intent = new Intent(((Activity) context), ChiTietSanPhamActivity.class);
 
-                remenBerProduct(id.getTen_san_pham(), id.getDon_gia(), id.getImg_url(), id.getMo_ta());
+                remenBerProduct(id.getId_san_pham(),id.getTen_san_pham(), id.getDon_gia(), id.getImg_url(), id.getMo_ta());
                 ((Activity) context).startActivity(intent);
 
 
@@ -140,13 +141,14 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
 
     }
 
-    private void remenBerProduct(String tenSanPham, int donGia, String imgUrl, String moTa) {
+    private void remenBerProduct(int idSp,String tenSanPham, int donGia, String imgUrl, String moTa) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("PRODUCT", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("tenSp", tenSanPham);
         editor.putInt("doGia", donGia);
+        editor.putInt("idSp", idSp);
         editor.putString("anhSp", imgUrl);
         editor.putString("moTa", moTa);
 
