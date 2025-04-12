@@ -113,7 +113,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             }
         });
 
-        //Kiểm tra nếu tên tài khoản là admin thì ẩn đi layout them giỏ hàng
+
         SharedPreferences sharedPreferences1 = getSharedPreferences("USER", MODE_PRIVATE);
         String tenTaiKhoan = sharedPreferences1.getString("tenDangNhap", "");
 

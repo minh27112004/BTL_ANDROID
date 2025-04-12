@@ -94,7 +94,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                 int donGia = id.getGiaSanPhamUser();
                 String tenAnh = id.getAnhSanPhamUser();
 
-                if((listAllSp.get(currentPosition).getSoLuongSp())<=0){
+                if( sanPhamTrangChuDAO.getSoLuongHienTai(listAllSp.get(currentPosition).getIdSanPhamUser())<=0){
                     Toast.makeText(context, "Sản phẩm tạm hết!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -111,6 +111,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                 } else {
                     GioHangDTO objGioHang = new GioHangDTO();
                     objGioHang.setTenSanPham(tenSanPham);
+                    objGioHang.setIdSanPham(id.getIdSanPhamUser());
                     objGioHang.setGiaSanPham(donGia);
                     objGioHang.setImgSanPham(tenAnh);
                     objGioHang.setSoLuongSanPham(1);
@@ -146,8 +147,10 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
 
         editor.putString("tenSp", tenSanPhamUser);
         editor.putInt("doGia", giaSanPham);
+        editor.putInt("idSp", giaSanPham);
         editor.putString("anhSp", anhSp);
         editor.putString("moTa", moTaSp);
+
         editor.apply();
 
 

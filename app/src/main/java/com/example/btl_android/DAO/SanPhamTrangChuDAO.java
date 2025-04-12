@@ -111,6 +111,33 @@ public class SanPhamTrangChuDAO {
 
     }
 
+    public int getSoLuongHienTai(int idSanPham) {
+        int soLuong = -1;
+
+        // Sử dụng parameterized query để tránh SQL injection
+        Cursor cursor = db.rawQuery("SELECT so_luong FROM tb_san_pham WHERE id_san_pham = ?",
+                new String[]{String.valueOf(idSanPham)});
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    int columnIndex = cursor.getColumnIndex("so_luong");
+                    if (columnIndex >= 0) {
+                        soLuong = cursor.getInt(columnIndex);
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("SanPhamTrangChuDAO", "Lỗi khi đọc số lượng sản phẩm: " + e.getMessage());
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return soLuong;
+    }
+
+
+
 
 
 

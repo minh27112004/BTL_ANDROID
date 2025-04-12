@@ -19,23 +19,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.btl_android.ChiTietSanPhamActivity;
 import com.example.btl_android.DAO.GioHangDAO;
+import com.example.btl_android.DAO.SanPhamTrangChuDAO;
 import com.example.btl_android.DTO.DanhSachSanPhamDTO;
 import com.example.btl_android.DTO.GioHangDTO;
+import com.example.btl_android.DTO.SanPhamTrangChuUserDTO;
 import com.example.btl_android.R;
 
 public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSachSanPham.ViewHolder> {
 
     ArrayList<DanhSachSanPhamDTO> list;
     private Context context;
+    private List<GioHangDTO> listGioHang;
     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
     GioHangDAO gioHangDAO;
+    private List<SanPhamTrangChuUserDTO> listAllSp;
+    private SanPhamTrangChuDAO sanPhamTrangChuDAO;
 
     public AdapterDanhSachSanPham(ArrayList<DanhSachSanPhamDTO> list, Context context) {
         this.list = list;
         this.context = context;
+        this.sanPhamTrangChuDAO = new SanPhamTrangChuDAO(context);
+        this.gioHangDAO = new GioHangDAO(context);
     }
 
     @NonNull
@@ -49,15 +57,16 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        DanhSachSanPhamDTO id = list.get(position);
-        String nameImg = list.get(position).getImg_url();
+        int currentPosition = holder.getAdapterPosition();
+        listAllSp = sanPhamTrangChuDAO.getAll();
+        DanhSachSanPhamDTO id = list.get(currentPosition);
+        String nameImg = list.get(currentPosition).getImg_url();
         int resourceImg = ((Activity) context).getResources().getIdentifier(nameImg, "drawable", ((Activity) context).getPackageName());
 
         holder.imgdanhsachsp.setImageResource(resourceImg);
-        holder.tvtendanhsachsanpham.setText(list.get(position).getTen_san_pham());
-        holder.tvgiadanhsachsanpham.setText(decimalFormat.format(list.get(position).getDon_gia()) + " VND / 1kg");
+        holder.tvtendanhsachsanpham.setText(list.get(currentPosition).getTen_san_pham());
+        holder.tvgiadanhsachsanpham.setText(decimalFormat.format(list.get(currentPosition).getDon_gia()) + " VND / 1kg");
 
-        gioHangDAO = new GioHangDAO(context);
 
         String base64 = list.get(position).getImg_url();
         try {
@@ -70,7 +79,7 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
             e.printStackTrace();
         }
 
-
+        listGioHang = gioHangDAO.getAll();
         holder.ivGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,23 +88,36 @@ public class AdapterDanhSachSanPham extends RecyclerView.Adapter<AdapterDanhSach
                 int giaSp = id.getDon_gia();
                 String tenAnh = id.getImg_url();
 
-                GioHangDTO objGioHang = new GioHangDTO();
-                objGioHang.setTenSanPham(tenSp);
-                objGioHang.setGiaSanPham(giaSp);
-                objGioHang.setImgSanPham(tenAnh);
-                objGioHang.setSoLuongSanPham(1);
-                objGioHang.setTongTienCuaSp(giaSp);
-
-                long kq = gioHangDAO.addRow(objGioHang);
-                if (kq > 0) {
-
-                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-
-
+                if((listAllSp.get(currentPosition).getSoLuongSp())<=0){
+                    Toast.makeText(context, "Sản phẩm tạm hết!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // Kiểm tra trùng lặp
+                boolean isExist = false;
+                for (GioHangDTO item : listGioHang) {
+                    if (item.getTenSanPham().equals(tenSp)) {
+                        isExist = true;
+                        break;
+                    }
+                }
+                if (isExist) {
+                    Toast.makeText(context, "Sản phẩm đã có trong giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
+                    GioHangDTO objGioHang = new GioHangDTO();
+                    objGioHang.setTenSanPham(tenSp);
+                    objGioHang.setGiaSanPham(giaSp);
+                    objGioHang.setImgSanPham(tenAnh);
+                    objGioHang.setSoLuongSanPham(1);
+                    objGioHang.setTongTienCuaSp(giaSp);
 
-                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    long kq = gioHangDAO.addRow(objGioHang);
+                    if (kq > 0) {
+                        Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        listGioHang.add(objGioHang);
 
+                    } else {
+                        Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 

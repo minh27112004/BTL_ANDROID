@@ -38,7 +38,6 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
 
     Context context;
     public static List<GioHangDTO> list;
-    private List<SanPhamTrangChuUserDTO> listAllSp;
     GioHangDAO gioHangDAO;
     SanPhamTrangChuDAO  sanPhamTrangChuDAO;
 
@@ -62,22 +61,22 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        listAllSp = sanPhamTrangChuDAO.getAll();
-        GioHangDTO id = list.get(position);
+        int currentPosition = holder.getAdapterPosition();
+        GioHangDTO id = list.get(currentPosition);
 
         list = gioHangDAO.getAll();
 
-        holder.tvTenSanPham.setText(list.get(position).getTenSanPham());
-        holder.tvGiaMacDinh.setText(decimalFormat.format(list.get(position).getGiaSanPham()) + " VND / 1Kg");
-        String tenImg = list.get(position).getImgSanPham();
+        holder.tvTenSanPham.setText(list.get(currentPosition).getTenSanPham());
+        holder.tvGiaMacDinh.setText(decimalFormat.format(list.get(currentPosition).getGiaSanPham()) + " VND / 1Kg");
+        String tenImg = list.get(currentPosition).getImgSanPham();
         int resImg =
                 (((Activity) context).getResources().getIdentifier(tenImg
                         , "drawable", ((Activity) context).getPackageName()));
         holder.ivSanPham.setImageResource(resImg);
-        holder.tvTongTien.setText(decimalFormat.format(list.get(position).getTongTienCuaSp()) + " VND");
-        holder.tvSoLuongSp.setText(list.get(position).getSoLuongSanPham() + "");
+        holder.tvTongTien.setText(decimalFormat.format(list.get(currentPosition).getTongTienCuaSp()) + " VND");
+        holder.tvSoLuongSp.setText(list.get(currentPosition).getSoLuongSanPham() + "");
 
-        String base64 = list.get(position).getImgSanPham();
+        String base64 = list.get(currentPosition).getImgSanPham();
 
         try {
             byte[] imageBytes = Base64.decode(base64, Base64.DEFAULT);
@@ -143,20 +142,17 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
 
 
                 dialog.show();
-
-
             }
         });
-
 
         //Set thêm sản phẩm
         holder.tvCongSoLuongSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (id.getSoLuongSanPham() < 10  &&  id.getSoLuongSanPham() < listAllSp.get(position).getSoLuongSp()) {
+                if (id.getSoLuongSanPham() < 10  &&  id.getSoLuongSanPham() < sanPhamTrangChuDAO.getSoLuongHienTai(id.getIdSanPham())) {
 
-                    //setThemSoLuongSanPham
+
                     int soLuongSanPhamMoi = id.getSoLuongSanPham() + 1;
                     id.setSoLuongSanPham(soLuongSanPhamMoi);
                     holder.tvSoLuongSp.setText(soLuongSanPhamMoi + "");
