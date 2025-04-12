@@ -58,7 +58,6 @@ public class AdapterDonHuyUser extends RecyclerView.Adapter<AdapterDonHuyUser.Vi
             @Override
             public void onClick(View v) {
 
-//                ((Activity)context).startActivity(new Intent(((Activity)context), ChiTietDonDatUserActivity.class));
                 remenberDonDat(
                         id.getId(), id.getTenKhachHang(), id.getSoDienThoai(), id.getDiaChi(),
                         id.getTenSanPham(), id.getTongTien(), id.getNgayDat(), id.getTrangThai()

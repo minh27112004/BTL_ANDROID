@@ -1,5 +1,7 @@
 package com.example.btl_android.Adapter;
 
+import static com.example.btl_android.Fragment.FragGioHangUser.listSanPham;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,6 +19,8 @@ import java.util.List;
 
 import com.example.btl_android.ChiTietDonDatAdminActivity;
 import com.example.btl_android.DAO.DonDatUserDAO;
+import com.example.btl_android.DAO.SanPhamTrangChuDAO;
+import com.example.btl_android.DAO.TrangChuAdminDAO;
 import com.example.btl_android.DTO.DonDatUserDTO;
 import com.example.btl_android.R;
 
@@ -74,9 +78,10 @@ public class DonDatAdminAdapter extends RecyclerView.Adapter<DonDatAdminAdapter.
         });
 
 
-        holder.btnXacNhan.setOnClickListener(new View.OnClickListener() {
+        /*holder.btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 holder.txtTrangThaiAdmin.setText("Đang giao hàng");
                 id.setTrangThai("Đang giao hàng");
                 int kq = donDatUserDAO.updateTrangThai(id);
@@ -88,6 +93,58 @@ public class DonDatAdminAdapter extends RecyclerView.Adapter<DonDatAdminAdapter.
                     Toast.makeText(context, "Đang giao hàng", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "Thât bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });*/
+
+        holder.btnXacNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                DonDatUserDTO donHang = list.get(position);
+                TrangChuAdminDAO sanPhamDAO = new TrangChuAdminDAO(context);
+
+                try {
+                    String[] cacSanPham = donHang.getTenSanPham().split("\n");
+
+                    for (String sanPhamStr : cacSanPham) {
+                        if (sanPhamStr.trim().isEmpty()) continue;
+
+
+                        String[] parts = sanPhamStr.split(",");
+                        if (parts.length < 2) continue;
+
+                        String tenSanPham = parts[0].substring(2).trim(); // Bỏ dấu "- " ở đầu
+                        int soLuong = Integer.parseInt(parts[1].replaceAll("[^0-9]", "")); // Lấy số từ "Số lượng: 2Kg"
+
+
+                        int idSanPham = sanPhamDAO.layIdSanPhamTheoTen(tenSanPham);
+
+                        if (idSanPham > 0) {
+
+                            boolean capNhatThanhCong = sanPhamDAO.capNhatSoLuong(idSanPham, soLuong);
+                            if (!capNhatThanhCong) {
+                                Toast.makeText(context, "Không đủ số lượng cho " + tenSanPham, Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                    }
+
+                    // Cập nhật trạng thái đơn hàng
+                    donHang.setTrangThai("Đang giao hàng");
+                    int kq = donDatUserDAO.updateTrangThai(donHang);
+
+                    if (kq > 0) {
+                        list = donDatUserDAO.donDat();
+                        setData(list);
+                        Toast.makeText(context, "Xác nhận đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "Cập nhật trạng thái thất bại", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+
+                    Toast.makeText(context, "Lỗi xử lý đơn hàng", Toast.LENGTH_SHORT).show();
                 }
             }
         });

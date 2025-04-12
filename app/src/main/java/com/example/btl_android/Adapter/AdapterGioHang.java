@@ -38,6 +38,7 @@ public class AdapterGioHang extends RecyclerView.Adapter<AdapterGioHang.ViewHold
 
     Context context;
     public static List<GioHangDTO> list;
+
     GioHangDAO gioHangDAO;
     SanPhamTrangChuDAO  sanPhamTrangChuDAO;
 

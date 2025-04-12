@@ -41,11 +41,11 @@ public class DiaChiUserAdapter extends RecyclerView.Adapter<DiaChiUserAdapter.Di
         holder.txtPhoneDiaChi.setText("Số điện thoại: " + item.getSoDienThoai());
         holder.txtDiaChi.setText("Địa chỉ: " + item.getDiaChi());
 
-        // Sử dụng holder.getAdapterPosition() trong OnClickListener
+
         holder.btnCapNhatDiaChi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lấy vị trí hiện tại của ViewHolder
+
                 int currentPosition = holder.getAdapterPosition();
                 // Kiểm tra xem vị trí có hợp lệ không
                 if (currentPosition != RecyclerView.NO_POSITION && currentPosition < list.size()) {

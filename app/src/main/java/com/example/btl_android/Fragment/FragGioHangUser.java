@@ -65,7 +65,7 @@ public class FragGioHangUser extends Fragment {
     public AppCompatButton btnDatHang;
     public DonDatUserDAO donDatUserDAO;
     List<DonDatUserDTO> list;
-    List<SanPhamTrangChuUserDTO> listSanPham;
+    public static List<SanPhamTrangChuUserDTO> listSanPham;
     SanPhamTrangChuDAO sanPhamTrangChuDAO;
     public TaiKhoanDAO taiKhoanDAO;
     private ConnectInternet connectInternet;

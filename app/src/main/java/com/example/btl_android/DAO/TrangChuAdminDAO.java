@@ -13,6 +13,7 @@ import com.example.btl_android.DTO.SanPhamRauAdminDTO;
 
 public class TrangChuAdminDAO {
     MyDBHelper myDBHelper;
+    SQLiteDatabase db;
 
 
     public TrangChuAdminDAO(Context context) {
@@ -189,6 +190,67 @@ public class TrangChuAdminDAO {
             } while (cursor.moveToNext());
         }
         return list;
+    }
+    public int getSoLuongHienTai(int idSanPham) {
+        int soLuong = -1;
+
+        // Sử dụng parameterized query để tránh SQL injection
+        Cursor cursor = db.rawQuery("SELECT so_luong FROM tb_san_pham WHERE id_san_pham = ?",
+                new String[]{String.valueOf(idSanPham)});
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    int columnIndex = cursor.getColumnIndex("so_luong");
+                    if (columnIndex >= 0) {
+                        soLuong = cursor.getInt(columnIndex);
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("SanPhamTrangChuDAO", "Lỗi khi đọc số lượng sản phẩm: " + e.getMessage());
+            } finally {
+                cursor.close();
+            }
+        }
+
+        return soLuong;
+    }
+    public boolean capNhatSoLuong(int idSanPham, int soLuongGiam) {
+         db = myDBHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // Lấy số lượng hiện tại
+        int soLuongHienTai = getSoLuongHienTai(idSanPham);
+        if (soLuongHienTai < soLuongGiam) {
+            return false; // Không đủ số lượng để giảm
+        }
+
+        values.put("so_luong", soLuongHienTai - soLuongGiam);
+
+        int rowsAffected = db.update(
+                "tb_san_pham",
+                values,
+                "id_san_pham = ?",
+                new String[]{String.valueOf(idSanPham)}
+        );
+
+        return rowsAffected > 0;
+    }
+    public int layIdSanPhamTheoTen(String tenSanPham) {
+        SQLiteDatabase db = myDBHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT id_san_pham FROM tb_san_pham WHERE ten_san_pham = ?",
+                new String[]{tenSanPham}
+        );
+
+        int id = -1;
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                id = cursor.getInt(0);
+            }
+            cursor.close();
+        }
+        return id;
     }
 
 
